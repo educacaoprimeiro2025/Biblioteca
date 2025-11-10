@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca José Maria Matosinho</title>
+  <link rel="stylesheet" href="css/variaveis.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/botoes.css">
+</head>
+
+<body>
+  <header class="cabecalho">
+    <div class="logo">
+      <img src="assets/icones/icone_escola.png" width="100" height="80" alt="Logo da Biblioteca">
+      <h1>Biblioteca Matosinho</h1>
+    </div>
+
+    <nav class="menu">
+      <ul>
+        <li><a href="paginas/home.html" class="ativo">Home</a></li>
+        <li><a href="paginas/sobre.html">Sobre</a></li>
+        <li><a href="paginas/projetos.html">Projetos</a></li>
+        <li><a href="paginas/login.html" class="botao-login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="bloco">
+      <div class="texto">
+        <p>
+          “A leitura é para o intelecto o que o exercício é para o corpo.”
+          <br><em>— Joseph Addison</em>
+        </p>
+      </div>
+      <div class="icone">
+        <img src="assets/icones/book1.png" alt="Ícone de livro">
+      </div>
+    </section>
+
+
+    <section class="bloco invertido">
+      <div class="texto">
+        <p>
+          “A mente que se abre a uma nova ideia jamais voltará ao seu tamanho original.”
+          <br><em>— Albert Einstein</em>
+        </p>
+      </div>
+      <div class="icone">
+        <img src="assets/icones/book1.png" alt="Ícone de livro">
+      </div>
+    </section>
+
+
+    <section class="bloco">
+      <div class="texto">
+        <p>
+          “A leitura engrandece a alma.”
+          <br><em>— Voltaire</em>
+        </p>
+      </div>
+      <div class="icone">
+        <img src="assets/icones/book1.png" alt="Ícone de livro">
+      </div>
+    </section>
+
+  </main>
+  <footer>
+    <p>© 2025 Biblioteca Escolar José Maria Matosinho</p>
+  </footer>
+
+  <div class="acessibilidade-container">
+    <button class="botao-acessibilidade" id="abrir-acessibilidade" aria-label="Acessibilidade">
+      🖐️
+    </button>
+
+    <div class="menu-acessibilidade" id="menu-acessibilidade">
+      <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
+      <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
+      <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
+    </div>
+  </div>
+
+
+  <script src="js/acess.js"></script>
+</body>
+
+</html>

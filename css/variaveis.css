@@ -1,0 +1,53 @@
+:root {
+  /* 🎨 Laranja principal */
+  --cor-principal: #ff8c1a;
+  --cor-degrade-1: #ff8c1a;
+  --cor-degrade-2: #ffa64d;
+  --cor-degrade-3: #ff8c1a;
+  --cor-hover: #ffb366;
+
+  /* 🎨 Destaques */
+  --cor-destaque: #ffd38a;       /* tom suave */
+  --cor-destaque-escuro: #e66e00; /* hover mais forte */
+
+  /* ⚫ Neutros */
+  --cor-texto: #2b2b2b;
+  --cor-branca: #ffffff;
+  --cor-b-suave: #f7f7f7;
+  --cor-cinza: #d6d6d6;
+
+  /* ✨ Sombras e efeitos */
+  --sombra-suave: rgba(0, 0, 0, 0.12);
+
+  /* 🔠 Fontes */
+  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
+  --fonte-texto: 'Segoe UI', sans-serif;
+}
+
+
+/* 🌙 Modo Escuro */
+.dark-mode {
+  /* 🎨 Laranjas ajustadas para modo escuro */
+  --cor-principal: #ff9a2b;
+  --cor-degrade-1: #ff9a2b;
+  --cor-degrade-2: #ffb65c;
+  --cor-degrade-3: #ff9a2b;
+  --cor-hover: #ffc27d;
+
+  /* 🎨 Destaques */
+  --cor-destaque: #ffcf99;       /* leve e visível */
+  --cor-destaque-escuro: #e67e22;/* tom quente, sem marrom */
+
+  /* ⚫ Neutros escuros */
+  --cor-texto: #f2f2f2;
+  --cor-branca: #1b1b1b;
+  --cor-b-suave: #242424;
+  --cor-cinza: #4a4a4a;
+
+  /* ✨ Sombras */
+  --sombra-suave: rgba(0, 0, 0, 0.4);
+
+  /* 🔠 Fontes */
+  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
+  --fonte-texto: 'Segoe UI', sans-serif;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Biblioteca Matosinho</title>
+  <link rel="stylesheet" href="../css/variaveis.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/botoes.css">
+
+</head>
+<body>
+<header class="cabecalho">
+  <div class="logo">
+    <img src="../assets/icones/icone_escola.png" width="100" height="80" alt="Logo da Biblioteca">
+    <h1>Biblioteca Matosinho</h1>
+  </div>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li><a href="login.html" class="ativo">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="login-container">
+    <h1>Login</h1>
+
+    <!-- Escolha do tipo -->
+    <div class="user-type-buttons">
+      <button type="button" id="btnAluno">Aluno</button>
+      <button type="button" id="btnProfessor">Professor</button>
+      <button type="button" id="btnVisitante">Visitante</button>
+    </div>
+
+    <!-- Formulário de login -->
+    <form id="loginForm" style="display:none;">
+      <p>
+        <label for="loginUser">Usuário:</label>
+        <input type="text" id="loginUser" required>
+      </p>
+      <p>
+        <label for="loginPass">Senha:</label>
+        <input type="password" id="loginPass" required>
+      </p>
+      <button type="submit">Entrar</button>
+      <p class="cadastro-link">
+        Não tem conta?  
+        <a href="cadastroA.html">Cadastrar</a> | 
+      </p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Biblioteca Escolar José Maria Matosinho</p>
+</footer>
+
+ <div class="acessibilidade-container">
+    <button class="botao-acessibilidade" id="abrir-acessibilidade" aria-label="Acessibilidade">
+      🖐️
+    </button>
+
+    <div class="menu-acessibilidade" id="menu-acessibilidade">
+      <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
+      <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
+      <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
+    </div>
+  </div>
+
+
+  <script src="../js/acess.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script src="../js/login.js"></script>
+
+</body>
+</html>
