@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Biblioteca José Maria Matosinho</title>
+  <title>Cadastrar Livro | Biblioteca</title>
+
   <link rel="stylesheet" href="../css/variaveis.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/botoes.css">
-
+  <link rel="stylesheet" href="../css/cadastrar_livro.css">
 </head>
 
 <body>
+
   <header class="cabecalho">
     <div class="logo">
       <img src="assets/icones/icone_escola.png" alt="Logo da Biblioteca">
@@ -23,42 +25,48 @@
         <li><a href="home.html">Home</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="projetos.html">Projetos</a></li>
-
         <li class="dropdown">
           <a href="#">Livros</a>
           <ul class="dropdown-content">
-            <li><a href="cadastrar_livro.html">Cadastrar</a></li>
+            <li><a href="cadastrar_livro.html" class="ativo">Cadastrar</a></li>
             <li><a href="editar_livro.html">Editar</a></li>
             <li><a href="excluir_livro.html">Excluir</a></li>
           </ul>
         </li>
-
         <li><a href="catalogo.html">Catálogo</a></li>
         <li><a href="perfil.html" class="botao-perfil">Perfil</a></li>
       </ul>
     </nav>
   </header>
 
+
+  <main class="container">
+    <h2>Cadastrar novo livro</h2>
+
+    <form id="formLivro" class="form-cadastro">
+      <label>Título</label>
+      <input type="text" id="titulo" required>
+
+      <label>Descrição</label>
+      <textarea id="descricao" rows="4"></textarea>
+
+      <label>Capa do livro</label>
+      <input type="file" id="capa" accept="image/*" required>
+
+      <button type="submit">Salvar</button>
+    </form>
+
+    <p id="msg"></p>
+  </main>
+
+
   <footer>
     <p>© 2025 Biblioteca Escolar José Maria Matosinho</p>
   </footer>
 
- <div class="acessibilidade-container">
-    <button class="botao-acessibilidade" id="abrir-acessibilidade" aria-label="Acessibilidade">
-      🖐️
-    </button>
-
-    <div class="menu-acessibilidade" id="menu-acessibilidade">
-      <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
-      <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
-      <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
-    </div>
-  </div>
-
 
   <script src="../js/acess.js"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js"></script>
-
+  <script type="module" src="../js/cadastrar_livros.js"></script>
 </body>
 
 </html>

@@ -3,8 +3,8 @@
 // =====================
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-const SUPABASE_URL = "https://SEU-PROJETO.supabase.co";
-const SUPABASE_KEY = "SUA-CHAVE-ANON";
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+const SUPABASE_KEY = "SUA_CHAVE_ANON_AQUI";   // ANON KEY
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const wrapper = document.querySelector(".carrossel-wrapper");

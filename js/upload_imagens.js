@@ -1,9 +1,8 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-// Conexão com o Supabase
-const supabaseUrl = "https://kwsviqxynrfdmppfqgif.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3c3ZpcXh5bnJmZG1wcGZxZ2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNjMyNjUsImV4cCI6MjA3NzgzOTI2NX0.eUpCU13q-Q4-xnv-PzGEhWcUH70ZPHfnMQBkx1ib-hM";
-const supabase = createClient(supabaseUrl, supabaseKey);
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+const SUPABASE_KEY = "SUA_CHAVE_ANON_AQUI";   // ANON KEY
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Elemento onde os cards serão exibidos
 const container = document.querySelector(".livros-container");

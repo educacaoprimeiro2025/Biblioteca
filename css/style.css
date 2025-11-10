@@ -645,3 +645,40 @@ footer p {
     padding: 1.5rem;
   }
 }
+
+
+.form-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.form-cadastro input,
+.form-cadastro textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--cor-cinza);
+}
+
+.form-cadastro button {
+  padding: 10px;
+  background: var(--cor-degrade-1);
+  color: var(--cor-texto);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.form-cadastro button:hover {
+  transform: scale(1.05);
+  background: var(--cor-degrade-3);
+}
+
+#msg {
+  margin-top: 15px;
+  font-weight: bold;
+}
