@@ -1,3 +1,9 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+const SUPABASE_KEY = "SUA_CHAVE_ANON_AQUI"; // substitua
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
 document.addEventListener("DOMContentLoaded", () => {
   const btnAluno = document.getElementById("btnAluno");
   const btnProfessor = document.getElementById("btnProfessor");
@@ -13,22 +19,22 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.style.display = "block";
   }
 
-
   btnAluno.addEventListener("click", () => mostrarLogin("aluno"));
-
-
   btnProfessor.addEventListener("click", () => mostrarLogin("professor"));
 
-
+  // ✅ Visitante
   btnVisitante.addEventListener("click", () => {
     alert("Acesso como visitante. Algumas funções podem estar limitadas.");
-    localStorage.setItem("tipoUsuario", "visitante"); 
-    localStorage.removeItem("usuario"); 
-    window.location.href = "../paginas/catalogo.html"; 
+    localStorage.setItem("tipoUsuario", "visitante");
+    localStorage.removeItem("usuario");
+    localStorage.setItem("adm", "false");
+    window.location.href = "../paginas/catalogo.html";
   });
 
-
-  loginForm.addEventListener("submit", (e) => {
+  // =======================================================
+  // ✅ LOGIN COM VERIFICAÇÃO NO SUPABASE
+  // =======================================================
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const user = document.getElementById("loginUser").value;
 
@@ -37,11 +43,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // 🔎 Consulta no Supabase
+    const { data, error } = await supabase
+      .from("usuarios")
+      .select("nome, adm")
+      .eq("nome", user)
+      .single();
 
+    if (error || !data) {
+      alert("Usuário não encontrado no sistema.");
+      return;
+    }
+
+    // ✅ Salva dados
     localStorage.setItem("tipoUsuario", tipoUsuario);
-    localStorage.setItem("usuario", user);
+    localStorage.setItem("usuario", data.nome);
+    localStorage.setItem("adm", data.adm ? "true" : "false");
 
-    alert(`Login como ${tipoUsuario}: ${user}`);
+    alert(`Login como ${tipoUsuario}: ${data.nome}`);
     window.location.href = "../paginas/catalogo.html";
   });
 });

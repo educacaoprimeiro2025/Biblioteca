@@ -1,50 +1,58 @@
-// =====================
-// CARROSSEL DE LIVROS (versão sem Supabase)
-// =====================
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-const livros = [
-  {
-    titulo: "O Pequeno Príncipe",
-    descricao:
-      "Uma viagem poética sobre amizade, amor e o verdadeiro sentido da vida. Descubra como um menino vindo de outro planeta ensina lições que nenhum adulto jamais entenderia sozinho.",
-    capa: "../assets/livros/pq.jpg",
-  },
-  {
-    titulo: "Dom Casmurro",
-    descricao:
-      "Ciúme, dúvida e paixão se misturam numa das maiores obras da literatura brasileira. Bentinho narra sua história com Capitu — mas será que ele diz toda a verdade?",
-    capa: "../assets/livros/dom.jpg",
-  },
-  {
-    titulo: "Harry Potter e a Pedra Filosofal",
-    descricao:
-      "Um garoto comum descobre que é um bruxo e embarca em uma jornada mágica repleta de amizade, coragem e mistério. O início da saga que encantou gerações.",
-    capa: "../assets/livros/hp.jpg",
-  },
-  {
-    titulo: "A Menina que Roubava Livros",
-    descricao:
-      "Em meio à Segunda Guerra Mundial, Liesel encontra nos livros uma forma de resistir e sonhar. Uma história comovente narrada pela própria Morte — e impossível de esquecer.",
-    capa: "../assets/livros/di.jpg",
-  },
-];
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+const SUPABASE_KEY = "SUA_CHAVE_PUBLIC_ANON_AQUI";
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const wrapper = document.getElementById("carrosselLivros");
+
+let livros = [];
 let indiceAtual = 0;
 let intervalo;
 
 // =====================
-// CRIAR ELEMENTOS
+// 🔹 BUSCA LIVROS NO SUPABASE
+// =====================
+async function carregarLivros() {
+  const { data, error } = await supabase
+    .from("livros")
+    .select("titulo, descricao, capa_url")
+    .limit(20);
+
+  if (error) {
+    console.error("Erro ao buscar livros:", error);
+    return;
+  }
+
+  livros = data || [];
+
+  if (livros.length === 0) {
+    wrapper.innerHTML = "<p>Nenhum livro encontrado.</p>";
+    return;
+  }
+
+  criarSlides();
+  iniciarTroca();
+}
+
+// =====================
+// 🔹 CRIA SLIDES
 // =====================
 function criarSlides() {
   wrapper.innerHTML = "";
+  const container = wrapper.parentElement;
+
+  // Apaga indicadores antigos
+  const antigos = container.querySelector(".carrossel-indicadores");
+  if (antigos) antigos.remove();
+
   livros.forEach((livro, i) => {
     const card = document.createElement("div");
     card.classList.add("slide");
     if (i === 0) card.classList.add("ativo");
 
     card.innerHTML = `
-      <img src="${livro.capa}" alt="${livro.titulo}">
+      <img src="${livro.capa_url}" alt="${livro.titulo}">
       <div class="descricao">
         <h3>${livro.titulo}</h3>
         <p>${livro.descricao}</p>
@@ -53,20 +61,22 @@ function criarSlides() {
     wrapper.appendChild(card);
   });
 
-  // 🔹 Criar indicadores (bolinhas)
+  // 🔹 Criar indicadores
   const indicadores = document.createElement("div");
   indicadores.classList.add("carrossel-indicadores");
+
   livros.forEach((_, i) => {
     const btn = document.createElement("button");
     if (i === 0) btn.classList.add("ativo");
     btn.addEventListener("click", () => irParaSlide(i));
     indicadores.appendChild(btn);
   });
-  wrapper.parentElement.appendChild(indicadores);
+
+  container.appendChild(indicadores);
 }
 
 // =====================
-// MOSTRAR SLIDE
+// 🔹 MOSTRAR SLIDE
 // =====================
 function mostrarSlide(index) {
   const slides = document.querySelectorAll(".slide");
@@ -82,7 +92,7 @@ function mostrarSlide(index) {
 }
 
 // =====================
-// TROCA AUTOMÁTICA
+// 🔹 TROCA AUTOMÁTICA
 // =====================
 function iniciarTroca() {
   intervalo = setInterval(() => {
@@ -92,19 +102,18 @@ function iniciarTroca() {
 }
 
 // =====================
-// IR PARA SLIDE MANUAL
+// 🔹 SLIDE MANUAL
 // =====================
 function irParaSlide(index) {
   clearInterval(intervalo);
   indiceAtual = index;
   mostrarSlide(index);
-  iniciarTroca(); // reinicia o loop
+  iniciarTroca();
 }
 
 // =====================
-// INICIALIZA
+// 🔹 INICIALIZA
 // =====================
 document.addEventListener("DOMContentLoaded", () => {
-  criarSlides();
-  iniciarTroca();
+  carregarLivros();
 });

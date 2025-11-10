@@ -43,20 +43,15 @@
   <main class="container">
     <h2>Cadastrar novo livro</h2>
 
-    <form id="formLivro" class="form-cadastro">
-      <label>Título</label>
-      <input type="text" id="titulo" required>
-
-      <label>Descrição</label>
-      <textarea id="descricao" rows="4"></textarea>
-
-      <label>Capa do livro</label>
-      <input type="file" id="capa" accept="image/*" required>
-
+    <form id="formLivro">
+      <input type="text" id="titulo" placeholder="Título">
+      <textarea id="descricao"></textarea>
+      <input type="file" id="capa">
       <button type="submit">Salvar</button>
     </form>
 
     <p id="msg"></p>
+
   </main>
 
 
