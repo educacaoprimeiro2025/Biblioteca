@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
-const SUPABASE_KEY = "SUA_CHAVE_ANON_AQUI"; // substitua
+const SUPABASE_KEY = "SUA_CHAVE_PUBLIC_ANON_AQUI";
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnAluno.addEventListener("click", () => mostrarLogin("aluno"));
   btnProfessor.addEventListener("click", () => mostrarLogin("professor"));
 
-  // ✅ Visitante
+  // ✅ visitante
   btnVisitante.addEventListener("click", () => {
     alert("Acesso como visitante. Algumas funções podem estar limitadas.");
     localStorage.setItem("tipoUsuario", "visitante");
@@ -31,9 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../paginas/catalogo.html";
   });
 
-  // =======================================================
-  // ✅ LOGIN COM VERIFICAÇÃO NO SUPABASE
-  // =======================================================
+  // ✅ LOGIN
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const user = document.getElementById("loginUser").value;
@@ -43,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 🔎 Consulta no Supabase
     const { data, error } = await supabase
       .from("usuarios")
       .select("nome, adm")
@@ -51,11 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
       .single();
 
     if (error || !data) {
-      alert("Usuário não encontrado no sistema.");
+      alert("Usuário não encontrado.");
       return;
     }
 
-    // ✅ Salva dados
     localStorage.setItem("tipoUsuario", tipoUsuario);
     localStorage.setItem("usuario", data.nome);
     localStorage.setItem("adm", data.adm ? "true" : "false");
