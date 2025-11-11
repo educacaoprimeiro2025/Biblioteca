@@ -95,8 +95,11 @@ header h1 {
   width: 80%;
   max-width: 900px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding-bottom: 3rem;
+  margin-bottom: 2rem; 
+  padding-bottom: 2rem;
 }
+
+
 
 .bloco:hover {
   transform: translateY(-3px);
@@ -716,6 +719,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
