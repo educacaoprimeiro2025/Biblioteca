@@ -96,8 +96,8 @@ header h1 {
   max-width: 900px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 4rem; 
-  padding-bottom: 4rem;
-  margin-top: 4rem;
+  padding-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 
@@ -720,6 +720,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
