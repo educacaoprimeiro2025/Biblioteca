@@ -46,6 +46,8 @@ header h1 {
   min-height: 80vh;
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
+  padding-left: 2rem;
+  padding-bottom: 10rem;
 }
 
 
@@ -713,4 +715,5 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
