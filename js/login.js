@@ -61,10 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Supabase error:", error);
 
     if (error || !data) {
+      console.log("⚠️ Nenhum usuário encontrado com:", { user, senha });
+      console.log("Erro retornado:", error);
       alert("Usuário ou senha incorretos.");
       return;
     }
-
     // 💾 Armazena informações no navegador
     localStorage.setItem("tipoUsuario", tipoUsuario);
     localStorage.setItem("usuario", data.nome);
