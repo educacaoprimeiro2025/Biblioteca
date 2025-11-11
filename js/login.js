@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-// 🔑 Substitua pela sua chave pública do Supabase (Project Settings → API → Project API keys → anon public)
-const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+// 🔑 Conexão com o Supabase
+const SUPABASE_URL = "https://qzsmrnbpawbqdqeezqua.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let tipoUsuario = "";
 
-
+  // -----------------------------
+  // 🧭 Escolha do tipo de usuário
+  // -----------------------------
   function mostrarLogin(tipo) {
     tipoUsuario = tipo;
     botoes.style.display = "none";
@@ -28,12 +30,14 @@ document.addEventListener("DOMContentLoaded", () => {
   btnVisitante.addEventListener("click", () => {
     alert("Acesso como visitante. Algumas funções podem estar limitadas.");
     localStorage.setItem("tipoUsuario", "visitante");
-    localStorage.removeItem("usuario");
     localStorage.setItem("adm", "false");
+    localStorage.removeItem("usuario");
     window.location.href = "../paginas/catalogo.html";
   });
 
-  // 🔑 LOGIN
+  // -----------------------------
+  // 🔑 LOGIN (Aluno ou Professor)
+  // -----------------------------
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -45,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 🔍 Consulta no Supabase
+    // 🔍 Busca o usuário no Supabase
     const { data, error } = await supabase
       .from("usuarios")
       .select("nome, senha, adm")
@@ -61,12 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 💾 Armazena dados no navegador
+    // 💾 Armazena informações no navegador
     localStorage.setItem("tipoUsuario", tipoUsuario);
     localStorage.setItem("usuario", data.nome);
-    localStorage.setItem("adm", data.adm ? "true" : "false");
+    localStorage.setItem("adm", data.adm === true ? "true" : "false");
 
-    alert(`Login como ${tipoUsuario}: ${data.nome}`);
+    alert(`Login realizado como ${tipoUsuario}: ${data.nome}`);
     window.location.href = "../paginas/catalogo.html";
   });
 });

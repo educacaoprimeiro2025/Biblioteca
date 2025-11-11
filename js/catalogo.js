@@ -1,3 +1,13 @@
+// ==============================
+// 🔗 CONEXÃO COM O SUPABASE
+// ==============================
+const SUPABASE_URL = "https://qzsmrnbpawbqdqeezqua.supabase.co";
+const SUPABASE_ANON_KEY = "SUA_CHAVE_ANON_AQUI"; // substitua pela sua chave anon (Settings → API → Project API keys)
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ==============================
+// 📚 CÓDIGO PRINCIPAL
+// ==============================
 document.addEventListener("DOMContentLoaded", () => {
   const tipoUsuario = localStorage.getItem("tipoUsuario");
   const usuario = localStorage.getItem("usuario");
@@ -11,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 👋 Mensagem de boas-vindas no topo
+  // 👋 Mensagem de boas-vindas
   const msg = document.createElement("p");
   msg.style.textAlign = "right";
   msg.style.marginRight = "20px";
@@ -24,49 +34,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   header.appendChild(msg);
 
-  // 🚫 Restringe acesso do visitante e remove espaço do botão "Perfil"
+  // 🚫 Restringe acesso do visitante e remove o botão de perfil
   if (tipoUsuario === "visitante") {
     if (linkPerfil) {
       const liPerfil = linkPerfil.closest("li");
-      if (liPerfil) liPerfil.remove(); // remove o <li> inteiro pra não deixar espaço
+      if (liPerfil) liPerfil.remove();
     }
     const botoesRestritos = document.querySelectorAll(".btn-editar, .btn-excluir");
     botoesRestritos.forEach(btn => btn.style.display = "none");
   }
 
   // =====================================================================
-  // 📚 CÓDIGO ORIGINAL DO CATÁLOGO
+  // 📚 CATÁLOGO DE LIVROS
   // =====================================================================
-
   const letrasContainer = document.getElementById("filtro-letras");
   const lista = document.getElementById("lista-livros");
 
-  // Letras A–Z
   const alfabeto = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-
-  // MOCK — (iremos trocar por dados do Supabase)
-  let livros = [
-    { 
-      titulo: "A Droga da Obediência", 
-      descricao: "Aventura estudantil cheia de mistérios.",
-      capa_url: "https://via.placeholder.com/200x260?text=Livro+A"
-    },
-    { 
-      titulo: "A Droga da Desobediência", 
-      descricao: "Aventura estudantil cheia de mistérios.",
-      capa_url: "https://via.placeholder.com/200x260?text=Livro+A"
-    },
-    { 
-      titulo: "Bíblia Sagrada", 
-      descricao: "Livro sagrado da tradição cristã.",
-      capa_url: "https://via.placeholder.com/200x260?text=Livro+B"
-    },
-    { 
-      titulo: "Dom Casmurro", 
-      descricao: "Clássico de Machado de Assis.",
-      capa_url: "https://via.placeholder.com/200x260?text=Livro+D"
-    },
-  ];
+  let livros = [];
 
   // 🅰️ Gerar botões A–Z
   alfabeto.forEach(letra => {
@@ -103,17 +88,37 @@ document.addEventListener("DOMContentLoaded", () => {
       li.className = "livro-card";
 
       li.innerHTML = `
-        <img src="${livro.capa_url}" alt="${livro.titulo}">
+        <img src="${livro.capa_url || 'https://via.placeholder.com/200x260?text=Sem+Capa'}" 
+             alt="${livro.titulo}">
         <h3>${livro.titulo}</h3>
-        <p>${livro.descricao}</p>
+        <p>${livro.descricao || ''}</p>
       `;
 
       lista.appendChild(li);
     });
   }
 
-  // 👀 Mostra todos os livros por padrão ao abrir a página
-  mostrarLivros(livros);
+  // 🔄 Buscar livros do Supabase
+  async function carregarLivros() {
+    lista.innerHTML = "<p>Carregando livros...</p>";
+
+    const { data, error } = await supabase
+      .from("livros")
+      .select("id, titulo, descricao, capa_url")
+      .order("titulo", { ascending: true });
+
+    if (error) {
+      console.error("Erro ao carregar livros:", error);
+      lista.innerHTML = "<p>Erro ao carregar livros.</p>";
+      return;
+    }
+
+    livros = data;
+    mostrarLivros(livros);
+  }
+
+  // 👀 Carrega todos os livros do Supabase ao abrir a página
+  carregarLivros();
 });
 
 // 🚪 Botão de sair

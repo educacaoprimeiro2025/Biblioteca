@@ -44,12 +44,17 @@
     <h2>Cadastrar novo livro</h2>
 
     <form id="formLivro">
-      <input type="text" id="titulo" placeholder="Título">
-      <textarea id="descricao"></textarea>
-      <input type="file" id="capa">
+      <label for="titulo">Título do livro</label>
+      <input type="text" id="titulo" placeholder="Digite o título" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" placeholder="Descreva brevemente o livro" rows="4" required></textarea>
+
+      <label for="capa">Imagem da capa</label>
+      <input type="file" id="capa" accept="image/*" required>
+
       <button type="submit">Salvar</button>
     </form>
-
     <p id="msg"></p>
 
   </main>
