@@ -414,6 +414,7 @@ footer {
   padding: 15px;
   width: 100%;
   background: var(--cor-b-suave);
+  margin-top: 3rem;
 }
 
 footer p {
@@ -720,6 +721,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
