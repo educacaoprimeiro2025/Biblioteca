@@ -74,5 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
     alert(`Login realizado como ${tipoUsuario}: ${data.nome}`);
     window.location.href = "../paginas/catalogo.html";
   });
-
 });

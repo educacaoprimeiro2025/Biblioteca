@@ -116,5 +116,4 @@ function irParaSlide(index) {
 // =====================
 document.addEventListener("DOMContentLoaded", () => {
   carregarLivros();
-
 });
