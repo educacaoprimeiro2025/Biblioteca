@@ -42,9 +42,9 @@ header h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* ✅ começa abaixo do header */
+  justify-content: flex-start; 
   min-height: 80vh;
-  padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
+  padding-top: 5rem;
   text-align: center;
   padding-left: 2rem;
   padding-bottom: 10rem;
@@ -715,5 +715,6 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
