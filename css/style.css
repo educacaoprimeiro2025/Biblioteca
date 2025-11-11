@@ -690,7 +690,7 @@ footer p {
   padding: 2rem;
   width: 100%;
   max-width: 480px;
-  margin: 0 auto; /* centraliza horizontalmente */
+  margin: 0 auto; 
   text-align: left;
   color: var(--cor-texto);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -701,7 +701,6 @@ footer p {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* Centraliza tudo verticalmente também */
 .container {
   display: flex;
   flex-direction: column;
@@ -709,4 +708,21 @@ footer p {
   justify-content: center;
   min-height: 80vh;
   text-align: center;
+}
+
+.card-cadastro button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-cadastro button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }

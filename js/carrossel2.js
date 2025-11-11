@@ -1,17 +1,22 @@
+// =====================
+// CONFIG SUPABASE
+// =====================
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
+const SUPABASE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const wrapper = document.getElementById("carrosselLivros");
-
+const wrapper = document.querySelector(".carrossel-wrapper");
+const livrosPorTela = 4;
 let livros = [];
 let indiceAtual = 0;
-let intervalo;
+const tempoTroca = 7000;
 
 // =====================
-// 🔹 BUSCA LIVROS NO SUPABASE
+// 🔹 CARREGAR LIVROS DO SUPABASE
 // =====================
 async function carregarLivros() {
   const { data, error } = await supabase
@@ -20,36 +25,38 @@ async function carregarLivros() {
     .limit(20);
 
   if (error) {
-    console.error("Erro ao buscar livros:", error);
+    console.error("❌ Erro ao buscar livros:", error);
+    wrapper.innerHTML = "<p>Erro ao carregar livros.</p>";
     return;
   }
 
   livros = data || [];
 
-  if (livros.length === 0) {
+  if (livros.length > 0) {
+    mostrarLivros();
+    iniciarTroca();
+  } else {
     wrapper.innerHTML = "<p>Nenhum livro encontrado.</p>";
-    return;
   }
-
-  criarSlides();
-  iniciarTroca();
 }
 
 // =====================
-// 🔹 CRIA SLIDES
+// 🔹 MOSTRAR LIVROS
 // =====================
-function criarSlides() {
+function mostrarLivros() {
   wrapper.innerHTML = "";
-  const container = wrapper.parentElement;
 
-  // Apaga indicadores antigos
-  const antigos = container.querySelector(".carrossel-indicadores");
-  if (antigos) antigos.remove();
+  const grupo = livros.slice(indiceAtual, indiceAtual + livrosPorTela);
 
-  livros.forEach((livro, i) => {
+  // Reinicia se chegar ao fim
+  if (grupo.length < livrosPorTela && indiceAtual !== 0) {
+    indiceAtual = 0;
+    return mostrarLivros();
+  }
+
+  grupo.forEach((livro) => {
     const card = document.createElement("div");
-    card.classList.add("slide");
-    if (i === 0) card.classList.add("ativo");
+    card.classList.add("slide", "ativo");
 
     card.innerHTML = `
       <img src="${livro.capa_url}" alt="${livro.titulo}">
@@ -58,62 +65,22 @@ function criarSlides() {
         <p>${livro.descricao}</p>
       </div>
     `;
+
     wrapper.appendChild(card);
   });
-
-  // 🔹 Criar indicadores
-  const indicadores = document.createElement("div");
-  indicadores.classList.add("carrossel-indicadores");
-
-  livros.forEach((_, i) => {
-    const btn = document.createElement("button");
-    if (i === 0) btn.classList.add("ativo");
-    btn.addEventListener("click", () => irParaSlide(i));
-    indicadores.appendChild(btn);
-  });
-
-  container.appendChild(indicadores);
-}
-
-// =====================
-// 🔹 MOSTRAR SLIDE
-// =====================
-function mostrarSlide(index) {
-  const slides = document.querySelectorAll(".slide");
-  const botoes = document.querySelectorAll(".carrossel-indicadores button");
-
-  slides.forEach((slide, i) => {
-    slide.classList.remove("ativo");
-    botoes[i].classList.remove("ativo");
-  });
-
-  slides[index].classList.add("ativo");
-  botoes[index].classList.add("ativo");
 }
 
 // =====================
 // 🔹 TROCA AUTOMÁTICA
 // =====================
 function iniciarTroca() {
-  intervalo = setInterval(() => {
-    indiceAtual = (indiceAtual + 1) % livros.length;
-    mostrarSlide(indiceAtual);
-  }, 6000);
-}
-
-// =====================
-// 🔹 SLIDE MANUAL
-// =====================
-function irParaSlide(index) {
-  clearInterval(intervalo);
-  indiceAtual = index;
-  mostrarSlide(index);
-  iniciarTroca();
+  setInterval(() => {
+    indiceAtual += livrosPorTela;
+    mostrarLivros();
+  }, tempoTroca);
 }
 
 // =====================
 // 🔹 INICIALIZA
 // =====================
-document.addEventListener("DOMContentLoaded", () => {
-  carregarLivros();
-});
+document.addEventListener("DOMContentLoaded", carregarLivros);
