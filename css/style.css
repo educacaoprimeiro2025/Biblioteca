@@ -97,6 +97,7 @@ header h1 {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 4rem; 
   padding-bottom: 4rem;
+  margin-top: 4rem;
 }
 
 
@@ -719,6 +720,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
