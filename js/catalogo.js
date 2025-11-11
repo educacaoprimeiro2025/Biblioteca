@@ -1,7 +1,7 @@
 // ==============================
 // 🔗 CONEXÃO COM O SUPABASE
 // ==============================
-const SUPABASE_URL = "https://qzsmrnbpawbqdqeezqua.supabase.co";
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
 const SUPABASE_ANON_KEY = "SUA_CHAVE_ANON_AQUI"; // substitua pela sua chave anon (Settings → API → Project API keys)
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -128,4 +128,5 @@ if (btnLogout) {
     localStorage.clear();
     window.location.href = "../login/login.html";
   });
+
 }
