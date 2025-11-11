@@ -1,9 +1,13 @@
 // ==============================
 // 🔗 CONEXÃO COM O SUPABASE
 // ==============================
-const SUPABASE_URL = "https://qzsmrnbpawbqdqeezqua.supabase.co";
-const SUPABASE_ANON_KEY = "SUA_CHAVE_ANON_AQUI"; // substitua pela sua chave anon (Settings → API → Project API keys)
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ==============================
 // 📚 CÓDIGO PRINCIPAL
@@ -41,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (liPerfil) liPerfil.remove();
     }
     const botoesRestritos = document.querySelectorAll(".btn-editar, .btn-excluir");
-    botoesRestritos.forEach(btn => btn.style.display = "none");
+    botoesRestritos.forEach((btn) => (btn.style.display = "none"));
   }
 
   // =====================================================================
@@ -54,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let livros = [];
 
   // 🅰️ Gerar botões A–Z
-  alfabeto.forEach(letra => {
+  alfabeto.forEach((letra) => {
     const btn = document.createElement("button");
     btn.textContent = letra;
     btn.addEventListener("click", () => filtrarPorLetra(letra));
@@ -63,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🔠 Função de filtro
   function filtrarPorLetra(letra) {
-    document.querySelectorAll(".filtro-letras button")
-      .forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll("#filtro-letras button").forEach((btn) => btn.classList.remove("active"));
 
-    [...document.querySelectorAll(".filtro-letras button")]
-      .find(btn => btn.textContent === letra)
-      .classList.add("active");
+    const ativo = [...document.querySelectorAll("#filtro-letras button")].find(
+      (btn) => btn.textContent === letra
+    );
+    if (ativo) ativo.classList.add("active");
 
-    const filtrados = livros.filter(l => l.titulo.toUpperCase().startsWith(letra));
+    const filtrados = livros.filter((l) => l.titulo.toUpperCase().startsWith(letra));
     mostrarLivros(filtrados);
   }
 
@@ -78,20 +82,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function mostrarLivros(listaLivros) {
     lista.innerHTML = "";
 
-    if (listaLivros.length === 0) {
+    if (!listaLivros || listaLivros.length === 0) {
       lista.innerHTML = "<p>Nenhum livro encontrado.</p>";
       return;
     }
 
-    listaLivros.forEach(livro => {
+    listaLivros.forEach((livro) => {
       const li = document.createElement("li");
       li.className = "livro-card";
 
       li.innerHTML = `
-        <img src="${livro.capa_url || 'https://via.placeholder.com/200x260?text=Sem+Capa'}" 
-             alt="${livro.titulo}">
+        <img src="${
+          livro.capa_url || "https://via.placeholder.com/200x260?text=Sem+Capa"
+        }" alt="${livro.titulo}">
         <h3>${livro.titulo}</h3>
-        <p>${livro.descricao || ''}</p>
+        <p>${livro.descricao || ""}</p>
       `;
 
       lista.appendChild(li);
@@ -108,12 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .order("titulo", { ascending: true });
 
     if (error) {
-      console.error("Erro ao carregar livros:", error);
-      lista.innerHTML = "<p>Erro ao carregar livros.</p>";
+      console.error("❌ Erro ao carregar livros:", error.message);
+      lista.innerHTML = `<p>Erro ao carregar livros: ${error.message}</p>`;
       return;
     }
 
-    livros = data;
+    livros = data || [];
     mostrarLivros(livros);
   }
 
