@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
+// 🔑 Substitua pela sua chave pública do Supabase (Project Settings → API → Project API keys → anon public)
 const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
 const SUPABASE_KEY = "SUA_CHAVE_PUBLIC_ANON_AQUI";
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let tipoUsuario = "";
 
+  // 👥 Mostra o formulário de login conforme o tipo escolhido
   function mostrarLogin(tipo) {
     tipoUsuario = tipo;
     botoes.style.display = "none";
@@ -22,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnAluno.addEventListener("click", () => mostrarLogin("aluno"));
   btnProfessor.addEventListener("click", () => mostrarLogin("professor"));
 
-  // ✅ visitante
+  // 👤 Acesso visitante
   btnVisitante.addEventListener("click", () => {
     alert("Acesso como visitante. Algumas funções podem estar limitadas.");
     localStorage.setItem("tipoUsuario", "visitante");
@@ -31,27 +33,35 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "../paginas/catalogo.html";
   });
 
-  // ✅ LOGIN
+  // 🔑 LOGIN
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const user = document.getElementById("loginUser").value;
+
+    const user = document.getElementById("loginUser").value.trim();
+    const senha = document.getElementById("loginPass").value.trim();
 
     if (!tipoUsuario) {
       alert("Selecione Aluno ou Professor antes de fazer login.");
       return;
     }
 
+    // 🔍 Consulta no Supabase
     const { data, error } = await supabase
       .from("usuarios")
-      .select("nome, adm")
+      .select("nome, senha, adm")
       .eq("nome", user)
+      .eq("senha", senha)
       .single();
 
+    console.log("Supabase data:", data);
+    console.log("Supabase error:", error);
+
     if (error || !data) {
-      alert("Usuário não encontrado.");
+      alert("Usuário ou senha incorretos.");
       return;
     }
 
+    // 💾 Armazena dados no navegador
     localStorage.setItem("tipoUsuario", tipoUsuario);
     localStorage.setItem("usuario", data.nome);
     localStorage.setItem("adm", data.adm ? "true" : "false");
