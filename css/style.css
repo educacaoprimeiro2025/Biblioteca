@@ -299,12 +299,11 @@ footer p {
   margin: 10px 0;
 }
 
-/* ================================================== */
-/* ================ CATÁLOGO DE LIVROS =============== */
-/* ================================================== */
+/* ==============================
+   CATÁLOGO DE LIVROS (GRID)
+============================== */
 
-/* Container geral do catálogo */
-.catalogo-container {
+.catalogo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -313,19 +312,16 @@ footer p {
   padding: 2rem;
   width: 90%;
   max-width: 1200px;
-  background-color: var(--cor-fundo);
   color: var(--cor-texto);
 }
 
-/* Título */
-.catalogo-container h2 {
+.catalogo h2 {
   font-family: var(--fonte-titulo);
   color: var(--cor-texto);
   text-align: center;
-  margin-bottom: 1rem;
 }
 
-/* Filtro A-Z */
+/* Letras A–Z */
 .filtro-letras {
   display: flex;
   flex-wrap: wrap;
@@ -346,20 +342,23 @@ footer p {
 }
 
 .filtro-letras button:hover,
-.filtro-letras button.ativo {
+.filtro-letras button.active {
   background-color: var(--cor-destaque);
   color: var(--cor-branca);
 }
 
-/* Grid de livros */
-.livros-grid {
+/* Grid principal dos livros */
+.lista-livros {
+  list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
   width: 100%;
+  padding: 0;
+  justify-items: center;
 }
 
-/* Card individual do livro */
+/* Estilo dos cards de livros */
 .livro-card {
   background-color: var(--cor-b-suave);
   border-radius: 12px;
@@ -367,6 +366,8 @@ footer p {
   text-align: center;
   padding: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 220px;
 }
 
 .livro-card:hover {
@@ -392,9 +393,6 @@ footer p {
   font-size: 0.9rem;
   color: var(--cor-texto-suave);
 }
-
-
-
 
 
 
