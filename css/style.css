@@ -143,51 +143,78 @@ header h1 {
 /* ==================== CARROSSEL =================== */
 /* ================================================== */
 
+.carrossel {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--cor-fundo, #f9f9f9);
+}
+
 .carrossel-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  overflow: hidden;
-  width: 100%;
   justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: nowrap;
 }
 
 .card-livro {
-  min-width: 250px;
-  background: #fff;
+  background-color: orange;
+  width: 220px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  margin: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  overflow: hidden;
+  padding: 1rem;
   text-align: center;
-  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-livro:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.card-livro.vazio {
+  background-color: transparent;
+  border: 2px dashed #ccc;
 }
 
 .card-livro img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.card-livro h3 {
+  margin: 0.8rem 0 0.3rem;
+  font-size: 1.1rem;
+}
+
+.card-livro p {
+  font-size: 0.9rem;
+  color: #333;
 }
 
 .indicadores {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 1.2rem;
+  gap: 0.6rem;
 }
 
 .indicador {
-  width: 10px;
-  height: 10px;
-  background: #bbb;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  margin: 5px;
+  background-color: #ccc;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .indicador.ativo {
-  background: #333;
+  background-color: orange;
 }
-
 
 /* ================================================== */
 /* ==================== CRIADORES =================== */
@@ -651,6 +678,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
