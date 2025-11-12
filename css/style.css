@@ -31,25 +31,65 @@ main {
 /* ===================== HEADER ===================== */
 /* ================================================== */
 
+/* ================================================== */
+/* ===================== HEADER ===================== */
+/* ================================================== */
+
 header {
   background: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
   color: var(--cor-texto);
   text-align: center;
-  padding: 1rem;
+  padding: 3rem 1rem 2rem; /* aumenta o espaço vertical */
   box-shadow: 0 4px 8px var(--sombra-suave);
   width: 100%;
-  border-radius: 0 0 10px 10px;  
+  border-radius: 0 0 25px 25px;  
   box-sizing: border-box;
   position: relative;
   z-index: 10;
 }
 
-header h1 {
-  font-size: 2rem;
-  margin: 0;
-  letter-spacing: 1px;
+/* Logo centralizado com espaçamento */
+header img {
+  width: 160px;
+  height: auto;
+  margin-bottom: 1rem;
 }
 
+/* Título da biblioteca */
+header h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.2rem;
+  margin: 0.5rem 0;
+  color: var(--cor-branca);
+}
+
+/* Menu sob o título */
+header nav {
+  margin-top: 1rem;
+}
+
+header .menu ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header .menu a {
+  text-decoration: none;
+  color: var(--cor-branca);
+  font-weight: 500;
+  transition: color 0.3s, background 0.3s;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+
+header .menu a:hover {
+  background-color: var(--cor-hover);
+  color: var(--cor-texto);
+}
 /* ================================================== */
 /* ===================== CONTAINER ================== */
 /* ================================================== */
@@ -258,6 +298,7 @@ footer {
 footer p {
   margin: 10px 0;
 }
+
 
 
 
