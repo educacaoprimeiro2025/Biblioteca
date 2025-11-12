@@ -8,14 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const tipoUsuario = localStorage.getItem("tipoUsuario");
   const adm = localStorage.getItem("adm");
 
-  // 🔒 Se não estiver logado, redireciona
   if (!tipoUsuario) {
     alert("Você precisa estar logado!");
     window.location.href = "login.html";
     return;
   }
 
-  // 🔒 Bloqueia quem não for admin
   if (adm !== "true") {
     alert("Apenas administradores podem cadastrar livros!");
     window.location.href = "catalogo.html";
@@ -25,9 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ Acesso permitido: usuário administrador.");
 });
 
-
 // ------------------------------
-// 🟩 Cadastro do livro
+// 🟩 Cadastro do livro (com imagem otimizada)
 // ------------------------------
 const form = document.getElementById("formLivro");
 const msg = document.getElementById("msg");
@@ -51,11 +48,18 @@ form.addEventListener("submit", async (e) => {
   }
 
   try {
-    // 📦 Upload da capa no storage
-    const nomeArquivo = `capas/${Date.now()}-${arquivo.name}`;
+    // 🖼️ Converte e redimensiona imagem antes do upload
+    const imagemConvertida = await converterImagemParaWebP(arquivo, 300, 350);
+
+    const nomeArquivo = `capas/${Date.now()}-${arquivo.name.split(".")[0]}.webp`;
+
+    // 📦 Upload no Supabase Storage
     const { error: uploadError } = await supabase.storage
       .from("capas")
-      .upload(nomeArquivo, arquivo, { upsert: true });
+      .upload(nomeArquivo, imagemConvertida, {
+        contentType: "image/webp",
+        upsert: true,
+      });
 
     if (uploadError) throw uploadError;
 
@@ -80,3 +84,44 @@ form.addEventListener("submit", async (e) => {
     msg.textContent = "❌ Erro ao cadastrar livro.";
   }
 });
+
+// ------------------------------
+// 📸 Função auxiliar: converter imagem para WebP e redimensionar
+// ------------------------------
+async function converterImagemParaWebP(arquivo, larguraMax, alturaMax) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(arquivo);
+
+    img.onload = () => {
+      // Define dimensões proporcionais
+      let { width, height } = img;
+      if (width > larguraMax || height > alturaMax) {
+        const proporcao = Math.min(larguraMax / width, alturaMax / height);
+        width *= proporcao;
+        height *= proporcao;
+      }
+
+      // Desenha a imagem num canvas
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Converte o canvas em Blob .webp (qualidade 80%)
+      canvas.toBlob(
+        (blob) => {
+          URL.revokeObjectURL(url);
+          if (blob) resolve(blob);
+          else reject("Falha ao converter imagem");
+        },
+        "image/webp",
+        0.8
+      );
+    };
+
+    img.onerror = reject;
+    img.src = url;
+  });
+}
