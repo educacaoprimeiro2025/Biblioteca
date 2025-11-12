@@ -1,66 +1,18 @@
-/* =============================
-🌈 VARIÁVEIS GLOBAIS
-============================= */
-:root {
-  /* 🎨 Laranja principal */
-  --cor-principal: #ff8c1a;
-  --cor-degrade-1: #ff8c1a;
-  --cor-degrade-2: #ffa64d;
-  --cor-degrade-3: #ff8c1a;
-  --cor-hover: #ffb366;
+/* ================================================== */
+/* =================== GLOBAL ======================= */
+/* ================================================== */
 
-  /* 🎨 Destaques */
-  --cor-destaque: #ffd38a;
-  --cor-destaque-escuro: #e66e00;
-
-  /* ⚫ Neutros */
-  --cor-texto: #2b2b2b;
-  --cor-branca: #ffffff;
-  --cor-b-suave: #f7f7f7;
-  --cor-cinza: #d6d6d6;
-
-  /* ✨ Sombras e efeitos */
-  --sombra-suave: rgba(0, 0, 0, 0.12);
-
-  /* 🔠 Fontes */
-  --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-  --fonte-texto: 'Segoe UI', sans-serif;
-}
-
-/* 🌙 Modo Escuro */
-.dark-mode {
-  --cor-principal: #ff9a2b;
-  --cor-degrade-1: #ff9a2b;
-  --cor-degrade-2: #ffb65c;
-  --cor-degrade-3: #ff9a2b;
-  --cor-hover: #ffc27d;
-
-  --cor-destaque: #ffcf99;
-  --cor-destaque-escuro: #e67e22;
-
-  --cor-texto: #f2f2f2;
-  --cor-branca: #1b1b1b;
-  --cor-b-suave: #242424;
-  --cor-cinza: #4a4a4a;
-
-  --sombra-suave: rgba(0, 0, 0, 0.4);
-}
-
-/* =============================
-🧱 ESTRUTURA BASE
-============================= */
-html, body {
+html, body { 
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow-x: hidden; 
   font-family: var(--fonte-texto);
-  background-color: var(--cor-b-suave);
+  background-color: var(--cor-fundo);
   color: var(--cor-texto);
 }
 
-/* Layout principal com footer no final */
 body {
   display: flex;
   flex-direction: column;
@@ -68,186 +20,244 @@ body {
 }
 
 main {
-  flex: 1;
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* =============================
-📦 BLOCOS DE CONTEÚDO
-============================= */
+/* ================================================== */
+/* ===================== HEADER ===================== */
+/* ================================================== */
+
+header {
+  background: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
+  color: var(--cor-texto);
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 4px 8px var(--sombra-suave);
+  width: 100%;
+  border-radius: 0 0 10px 10px;  
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* ================================================== */
+/* ===================== CONTAINER ================== */
+/* ================================================== */
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
+  flex-grow: 1;
+  padding: 2rem 1rem 4rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
-/* Blocos de texto / citações / seções */
+/* ================================================== */
+/* ====================== MENU ====================== */
+/* ================================================== */
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--cor-texto);
+  padding: 10px 15px;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  background-color: var(--cor-hover);
+  border-radius: 5px;
+}
+
+/* ================================================== */
+/* ====================== BLOCOS ==================== */
+/* ================================================== */
+
 .bloco {
-  background: var(--cor-branca);
-  border-left: 6px solid var(--cor-principal);
-  border-radius: 16px;
-  box-shadow: 0 4px 12px var(--sombra-suave);
-  margin: 2rem auto;
-  padding: 2rem 3rem;
-  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cor-b-suave);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px var(--sombra-suave);
+  padding: 1.5rem;
+  width: 80%;
   max-width: 900px;
-  transition: all 0.3s ease;
+  margin: 2rem auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .bloco:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px var(--sombra-suave);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px var(--sombra-suave);
+}
+
+.bloco .texto {
+  flex: 2;
+  padding: 1rem;
+  border-left: 4px solid var(--cor-degrade-2);
 }
 
 .bloco .texto p {
-  line-height: 1.7;
-  color: var(--cor-texto);
-  text-align: justify;
-  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.bloco .texto p:first-child {
-  font-weight: bold;
-  font-size: 1.3rem;
+.bloco .icone {
+  flex: 1;
   text-align: center;
-  margin-bottom: 1.5rem;
 }
 
-.bloco img {
-  display: block;
-  margin: 1.5rem auto;
-  max-width: 100%;
+.bloco .icone img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.bloco.invertido {
+  flex-direction: row-reverse;
+}
+
+.bloco.invertido .texto {
+  border-left: none;
+  border-right: 4px solid var(--cor-degrade-2);
+  text-align: right;
+}
+
+/* ================================================== */
+/* ==================== CARROSSEL =================== */
+/* ================================================== */
+
+.carrossel {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--cor-fundo);
+}
+
+.carrossel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: nowrap;
+}
+
+.card-livro {
+  background-color: var(--cor-b-suave);
+  color: var(--cor-texto);
+  width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--sombra-suave);
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-livro:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px var(--sombra-suave);
+}
+
+.card-livro.vazio {
+  background-color: transparent;
+  border: 2px dashed var(--cor-cinza);
+}
+
+.card-livro img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-/* =============================
-📚 CARROSSEL DE LIVROS
-============================= */
-.carousel-container {
-  position: relative;
-  width: 90%;
-  max-width: 1100px;
-  margin: 2rem auto;
-  overflow: hidden;
-  border-radius: 16px;
-  background-color: var(--cor-branca);
-  box-shadow: 0 4px 12px var(--sombra-suave);
+.card-livro h3 {
+  margin: 0.8rem 0 0.3rem;
+  font-size: 1.1rem;
 }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
-}
-
-.carousel-card {
-  min-width: 25%;
-  box-sizing: border-box;
-  padding: 1rem;
-  text-align: center;
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px var(--sombra-suave);
-}
-
-.carousel-card h3 {
-  margin: 0.5rem 0;
+.card-livro p {
+  font-size: 0.9rem;
   color: var(--cor-texto);
 }
 
-.carousel-card p {
-  font-size: 0.9rem;
-  color: var(--cor-cinza);
-}
-
-.carousel-indicators {
+.indicadores {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
+  gap: 0.6rem;
 }
 
-.carousel-indicators button {
-  width: 10px;
-  height: 10px;
-  margin: 0 6px;
+.indicador {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: none;
   background-color: var(--cor-cinza);
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.carousel-indicators button.active {
-  background-color: var(--cor-principal);
+.indicador.ativo {
+  background-color: var(--cor-degrade-2);
 }
 
-/* =============================
-👥 CRIADORES
-============================= */
-.criadores {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+/* ================================================== */
+/* ====================== LOGIN ===================== */
+/* ================================================== */
+
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px var(--sombra-suave);
+  text-align: center;
 }
 
-.foto img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 12px var(--sombra-suave);
-  transition: transform 0.3s ease;
-}
+/* ================================================== */
+/* ===================== FOOTER ===================== */
+/* ================================================== */
 
-.foto img:hover {
-  transform: scale(1.05);
-}
-
-/* =============================
-⚫ FOOTER FIXO AO FINAL
-============================= */
 footer {
   text-align: center;
   padding: 15px;
-  width: 100%;
   background: var(--cor-b-suave);
   color: var(--cor-texto);
-  box-shadow: 0 -2px 8px var(--sombra-suave);
+  width: 100%;
   margin-top: auto;
+  border-top: 2px solid var(--cor-degrade-2);
 }
 
 footer p {
   margin: 10px 0;
 }
-
-/* =============================
-🌙 MODO ESCURO - AJUSTES
-============================= */
-.dark-mode body {
-  background-color: var(--cor-b-suave);
-  color: var(--cor-texto);
-}
-
-.dark-mode .bloco,
-.dark-mode .carousel-container {
-  background-color: var(--cor-branca);
-  box-shadow: 0 4px 12px var(--sombra-suave);
-}
-
-.dark-mode footer {
-  background-color: var(--cor-branca);
-  color: var(--cor-texto);
-}
-
-
-
-
-
-
 
 
 
