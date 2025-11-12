@@ -1,110 +1,57 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
-const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
+// 🔹 Substitua com suas credenciais do Supabase
+const SUPABASE_URL = "https://SEU-PROJETO.supabase.co";
+const SUPABASE_ANON_KEY = "SUA-CHAVE-ANON";
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const carrossel = document.getElementById("carrosselLivros");
 
-const wrapper = document.querySelector(".carrossel-wrapper");
-const indicadoresContainer = document.createElement("div");
-indicadoresContainer.classList.add("carrossel-indicadores");
-wrapper.insertAdjacentElement("afterend", indicadoresContainer);
-
-let livros = [];
-let indiceAtual = 0;
-const tempoTroca = 5000; // 5s por slide
-
-// =====================
-// 🔹 CARREGAR LIVROS
-// =====================
+// Função para buscar livros
 async function carregarLivros() {
-  const { data, error } = await supabase
+  const { data: livros, error } = await supabase
     .from("livros")
-    .select("titulo, descricao, capa_url")
-    .limit(10);
+    .select("titulo, autor, imagem_url")
+    .limit(4);
 
   if (error) {
-    console.error("❌ Erro ao buscar livros:", error);
-    wrapper.innerHTML = "<p>Erro ao carregar livros.</p>";
+    console.error("Erro ao buscar livros:", error);
     return;
   }
 
-  livros = data || [];
-  if (livros.length === 0) {
-    wrapper.innerHTML = "<p>Nenhum livro encontrado.</p>";
+  // Limpa o conteúdo atual
+  carrossel.innerHTML = "";
+
+  if (!livros || livros.length === 0) {
+    // Mostra 4 placeholders vazios
+    for (let i = 0; i < 4; i++) {
+      const vazio = document.createElement("div");
+      vazio.classList.add("card-livro", "vazio");
+      carrossel.appendChild(vazio);
+    }
     return;
   }
 
-  criarSlides();
-  criarIndicadores();
-  mostrarSlide(0);
-  iniciarTrocaAutomatica();
-}
-
-// =====================
-// 🔹 CRIAR SLIDES
-// =====================
-function criarSlides() {
-  wrapper.innerHTML = "";
-  livros.forEach((livro, i) => {
-    const slide = document.createElement("div");
-    slide.classList.add("slide");
-    slide.innerHTML = `
-      <img src="${livro.capa_url}" alt="${livro.titulo}">
-      <div class="descricao">
-        <h3>${livro.titulo}</h3>
-        <p>${livro.descricao}</p>
-      </div>
+  // Adiciona os livros do banco
+  livros.forEach(livro => {
+    const card = document.createElement("div");
+    card.classList.add("card-livro");
+    card.innerHTML = `
+      <img src="${livro.imagem_url || '../assets/imagens/placeholder.png'}" alt="${livro.titulo}">
+      <h3>${livro.titulo}</h3>
+      <p>${livro.autor || ""}</p>
     `;
-    wrapper.appendChild(slide);
-  });
-}
-
-// =====================
-// 🔹 CRIAR INDICADORES
-// =====================
-function criarIndicadores() {
-  indicadoresContainer.innerHTML = "";
-  livros.forEach((_, i) => {
-    const btn = document.createElement("button");
-    btn.addEventListener("click", () => mostrarSlide(i));
-    indicadoresContainer.appendChild(btn);
-  });
-}
-
-// =====================
-// 🔹 MOSTRAR SLIDE ATUAL
-// =====================
-function mostrarSlide(indice) {
-  const slides = document.querySelectorAll(".slide");
-  const indicadores = document.querySelectorAll(".carrossel-indicadores button");
-
-  slides.forEach((s, i) => {
-    s.classList.remove("ativo");
-    s.style.opacity = "0.4";
-    s.style.transform = "scale(0.9)";
-    s.style.filter = "blur(2px)";
-    indicadores[i].classList.remove("ativo");
+    carrossel.appendChild(card);
   });
 
-  slides[indice].classList.add("ativo");
-  slides[indice].style.opacity = "1";
-  slides[indice].style.transform = "scale(1.05)";
-  slides[indice].style.filter = "none";
-  indicadores[indice].classList.add("ativo");
-
-  indiceAtual = indice;
+  // Completa com placeholders se tiver menos de 4
+  for (let i = livros.length; i < 4; i++) {
+    const vazio = document.createElement("div");
+    vazio.classList.add("card-livro", "vazio");
+    carrossel.appendChild(vazio);
+  }
 }
 
-// =====================
-// 🔹 TROCA AUTOMÁTICA
-// =====================
-function iniciarTrocaAutomatica() {
-  setInterval(() => {
-    indiceAtual = (indiceAtual + 1) % livros.length;
-    mostrarSlide(indiceAtual);
-  }, tempoTroca);
-}
+carregarLivros();
 
-document.addEventListener("DOMContentLoaded", carregarLivros);
+
