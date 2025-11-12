@@ -3,27 +3,36 @@
   --cor-principal: #ff8c1a;
   --cor-degrade-1: #ff8c1a;
   --cor-degrade-2: #ffa64d;
-  --cor-degrade-3: #ff8c1a;
+  --cor-degrade-3: #ff9c33;
   --cor-hover: #ffb366;
 
   /* 🎨 Destaques */
-  --cor-destaque: #ffd38a;       /* tom suave */
+  --cor-destaque: #ffd38a;        /* tom suave */
   --cor-destaque-escuro: #e66e00; /* hover mais forte */
 
   /* ⚫ Neutros */
-  --cor-texto: #2b2b2b;
+  --cor-texto: #1f1f1f;           /* contraste melhorado */
   --cor-branca: #ffffff;
-  --cor-b-suave: #f7f7f7;
+  --cor-b-suave: #fafafa;         /* fundo mais limpo e suave */
   --cor-cinza: #d6d6d6;
 
   /* ✨ Sombras e efeitos */
   --sombra-suave: rgba(0, 0, 0, 0.12);
+  --sombra-flutuante: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   /* 🔠 Fontes */
   --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-  --fonte-texto: 'Segoe UI', sans-serif;
-}
+  --fonte-texto: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 
+  /* 📐 Layout e transições */
+  --raio-borda: 10px;
+  --transicao-padrao: 0.3s ease;
+  --espacamento: 1rem;
+
+  /* 🌈 Gradientes prontos */
+  --gradiente-horizontal: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
+  --gradiente-diagonal: linear-gradient(135deg, var(--cor-degrade-1), var(--cor-degrade-3));
+}
 
 /* 🌙 Modo Escuro */
 .dark-mode {
@@ -31,12 +40,12 @@
   --cor-principal: #ff9a2b;
   --cor-degrade-1: #ff9a2b;
   --cor-degrade-2: #ffb65c;
-  --cor-degrade-3: #ff9a2b;
+  --cor-degrade-3: #e67e22;
   --cor-hover: #ffc27d;
 
   /* 🎨 Destaques */
-  --cor-destaque: #ffcf99;       /* leve e visível */
-  --cor-destaque-escuro: #e67e22;/* tom quente, sem marrom */
+  --cor-destaque: #ffcf99;
+  --cor-destaque-escuro: #e67e22;
 
   /* ⚫ Neutros escuros */
   --cor-texto: #f2f2f2;
@@ -44,10 +53,11 @@
   --cor-b-suave: #242424;
   --cor-cinza: #4a4a4a;
 
-  /* ✨ Sombras */
-  --sombra-suave: rgba(0, 0, 0, 0.4);
+  /* ✨ Sombras mais naturais */
+  --sombra-suave: rgba(255, 255, 255, 0.08);
+  --sombra-flutuante: 0 4px 20px rgba(255, 255, 255, 0.05);
 
   /* 🔠 Fontes */
   --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-  --fonte-texto: 'Segoe UI', sans-serif;
+  --fonte-texto: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
