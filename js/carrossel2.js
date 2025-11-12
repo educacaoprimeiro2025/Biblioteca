@@ -5,7 +5,7 @@ const SUPABASE_URL = "https://qzsmrnbpawbydqeexzqua.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ"; // anon key
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const carrossel = document.getElementById("carrossel");
+const carrossel = document.getElementById("carrosselLivros");
 const indicadores = document.getElementById("indicadores");
 
 async function carregarLivros() {
@@ -24,11 +24,11 @@ async function carregarLivros() {
 
   livros.forEach((livro, index) => {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("card-livro");
     card.innerHTML = `
       <img src="${livro.capa_url}" alt="${livro.titulo}">
-      <h2>${livro.titulo}</h2>
-      <p>${livro.descricao || "Sem descrição disponível"}</p>
+      <h3>${livro.titulo}</h3>
+      <p>${livro.descricao || "Sem descrição"}</p>
     `;
     carrossel.appendChild(card);
 
@@ -45,11 +45,11 @@ async function carregarLivros() {
 let slideAtual = 0;
 
 function irParaSlide(index) {
-  const totalSlides = document.querySelectorAll(".card").length;
-  if (index >= totalSlides) index = 0;
-  if (index < 0) index = totalSlides - 1;
+  const total = document.querySelectorAll(".card-livro").length;
+  if (index >= total) index = 0;
+  if (index < 0) index = total - 1;
   slideAtual = index;
-  carrossel.style.transform = `translateX(-${index * 320}px)`;
+  carrossel.style.transform = `translateX(-${index * 100}%)`;
   atualizarIndicadores();
 }
 
@@ -59,14 +59,11 @@ function atualizarIndicadores() {
   });
 }
 
-function iniciarCarrossel(totalSlides) {
+function iniciarCarrossel(total) {
   setInterval(() => {
-    slideAtual = (slideAtual + 1) % totalSlides;
+    slideAtual = (slideAtual + 1) % total;
     irParaSlide(slideAtual);
   }, 4000);
 }
 
 carregarLivros();
-
-
-
