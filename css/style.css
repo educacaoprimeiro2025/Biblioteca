@@ -143,61 +143,63 @@ header h1 {
 /* ==================== CARROSSEL =================== */
 /* ================================================== */
 
-/* ===========================
-   LIVROS EM DESTAQUE
-=========================== */
-.carrossel {
-  text-align: center;
-  padding: 40px 0;
-}
-
-.carrossel-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-.card-livro {
-  width: 220px;
-  height: 320px;
-  background-color: #ff8c00;
-  color: #000;
-  text-align: center;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s;
+.carrossel-container {
+  position: relative;
+  width: 300px;
   overflow: hidden;
 }
 
-.card-livro:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+.carrossel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-.card-livro img {
+.card {
+  min-width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 10px;
+  text-align: center;
+  padding: 15px;
+}
+
+.card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-bottom: 2px solid #e67300;
+  border-radius: 8px;
 }
 
-.card-livro h3 {
+.card h2 {
+  font-size: 1.2em;
   margin: 10px 0 5px;
-  font-size: 1.1rem;
-}
-
-.card-livro p {
-  font-size: 0.9rem;
   color: #333;
 }
 
-.card-livro.vazio {
-  background-color: transparent;
-  border: 2px dashed #ddd;
-  box-shadow: none;
+.card p {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.indicador {
+  width: 10px;
+  height: 10px;
+  background: #bbb;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.indicador.ativo {
+  background: #333;
 }
 
 /* ================================================== */
@@ -662,6 +664,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
