@@ -31,10 +31,6 @@ main {
 /* ===================== HEADER ===================== */
 /* ================================================== */
 
-/* ================================================== */
-/* ===================== HEADER ===================== */
-/* ================================================== */
-
 header {
   background: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
   color: var(--cor-texto);
@@ -281,24 +277,6 @@ header .menu a:hover {
   text-align: center;
 }
 
-/* ================================================== */
-/* ===================== FOOTER ===================== */
-/* ================================================== */
-
-footer {
-  text-align: center;
-  padding: 15px;
-  background: var(--cor-b-suave);
-  color: var(--cor-texto);
-  width: 100%;
-  margin-top: auto;
-  border-top: 2px solid var(--cor-degrade-2);
-}
-
-footer p {
-  margin: 10px 0;
-}
-
 /* ==============================
    CATÁLOGO DE LIVROS (GRID)
 ============================== */
@@ -394,6 +372,26 @@ footer p {
   color: var(--cor-texto-suave);
 }
 
+
+/* ================================================== */
+/* ===================== FOOTER ===================== */
+/* ================================================== */
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: var(--cor-b-suave);
+  color: var(--cor-texto);
+  width: 100%;
+  margin-top: auto;
+  border-top: 2px solid var(--cor-degrade-2);
+  position: relative;
+  bottom: 0;
+}
+
+footer p {
+  margin: 10px 0;
+}
 
 
 
