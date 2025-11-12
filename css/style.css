@@ -143,20 +143,17 @@ header h1 {
 /* ==================== CARROSSEL =================== */
 /* ================================================== */
 
-.carrossel-container {
-  position: relative;
-  width: 300px;
-  overflow: hidden;
-}
-
-.carrossel {
+.carrossel-wrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
 }
 
-.card {
-  min-width: 300px;
-  background: white;
+.card-livro {
+  min-width: 250px;
+  background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin: 10px;
@@ -164,22 +161,11 @@ header h1 {
   padding: 15px;
 }
 
-.card img {
+.card-livro img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
-}
-
-.card h2 {
-  font-size: 1.2em;
-  margin: 10px 0 5px;
-  color: #333;
-}
-
-.card p {
-  font-size: 0.9em;
-  color: #555;
 }
 
 .indicadores {
@@ -201,6 +187,7 @@ header h1 {
 .indicador.ativo {
   background: #333;
 }
+
 
 /* ================================================== */
 /* ==================== CRIADORES =================== */
@@ -664,6 +651,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
