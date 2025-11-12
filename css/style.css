@@ -299,6 +299,99 @@ footer p {
   margin: 10px 0;
 }
 
+/* ================================================== */
+/* ================ CATÁLOGO DE LIVROS =============== */
+/* ================================================== */
+
+/* Container geral do catálogo */
+.catalogo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+/* Título */
+.catalogo-container h2 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-texto);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Filtro A-Z */
+.filtro-letras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtro-letras button {
+  background-color: var(--cor-b-suave);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-destaque);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filtro-letras button:hover,
+.filtro-letras button.ativo {
+  background-color: var(--cor-destaque);
+  color: var(--cor-branca);
+}
+
+/* Grid de livros */
+.livros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Card individual do livro */
+.livro-card {
+  background-color: var(--cor-b-suave);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px var(--sombra-suave);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.livro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px var(--sombra);
+}
+
+.livro-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+.livro-card h3 {
+  font-size: 1.1rem;
+  color: var(--cor-texto);
+  margin: 0.5rem 0;
+}
+
+.livro-card p {
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
 
 
 
