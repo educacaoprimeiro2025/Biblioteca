@@ -2,7 +2,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 // 🔗 Substitua pelos dados do seu projeto
 const SUPABASE_URL = "https://qzsmrnbpawbydqeexzqua.supabase.co";
-const SUPABASE_KEY = "coloque_sua_chave_publica_aqui"; // anon key
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ"; // anon key
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const carrossel = document.getElementById("carrossel");
@@ -67,5 +67,6 @@ function iniciarCarrossel(totalSlides) {
 }
 
 carregarLivros();
+
 
 
