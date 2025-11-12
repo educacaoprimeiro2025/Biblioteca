@@ -1,12 +1,11 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-// 🔗 Substitua pelos dados do seu projeto
-const SUPABASE_URL = "https://qzsmrnbpawbydqeexzqua.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ"; // anon key
+const SUPABASE_URL = "https://qzsmrnbpawbydqeezqua.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const carrossel = document.getElementById("carrosselLivros");
-const indicadores = document.getElementById("indicadores");
+const wrapper = document.getElementById("carrosselLivros");
+const indicadoresContainer = document.getElementById("indicadores");
 
 async function carregarLivros() {
   const { data: livros, error } = await supabase
@@ -15,55 +14,63 @@ async function carregarLivros() {
     .limit(4);
 
   if (error) {
-    console.error("Erro ao carregar livros:", error);
+    console.error("Erro ao buscar livros:", error);
     return;
   }
 
-  carrossel.innerHTML = "";
-  indicadores.innerHTML = "";
+  wrapper.innerHTML = "";
+  const quantidade = 4;
 
-  livros.forEach((livro, index) => {
+  for (let i = 0; i < quantidade; i++) {
+    const livro = livros[i];
     const card = document.createElement("div");
     card.classList.add("card-livro");
-    card.innerHTML = `
-      <img src="${livro.capa_url}" alt="${livro.titulo}">
-      <h3>${livro.titulo}</h3>
-      <p>${livro.descricao || "Sem descrição"}</p>
-    `;
-    carrossel.appendChild(card);
 
-    const indicador = document.createElement("div");
-    indicador.classList.add("indicador");
-    if (index === 0) indicador.classList.add("ativo");
-    indicador.addEventListener("click", () => irParaSlide(index));
-    indicadores.appendChild(indicador);
+    if (livro) {
+      const capaUrl = livro.capa_url?.startsWith("http")
+        ? livro.capa_url
+        : `${SUPABASE_URL}/storage/v1/object/public/capas/${livro.capa_url}`;
+
+      card.innerHTML = `
+        <img src="${capaUrl}" alt="${livro.titulo}">
+        <h3>${livro.titulo}</h3>
+        <p>${livro.descricao || ""}</p>
+      `;
+    } else {
+      card.classList.add("vazio");
+    }
+
+    wrapper.appendChild(card);
+  }
+
+  criarIndicadores(livros.length);
+}
+
+function criarIndicadores(qtd) {
+  indicadoresContainer.innerHTML = "";
+
+  for (let i = 0; i < qtd; i++) {
+    const bolinha = document.createElement("div");
+    bolinha.classList.add("indicador");
+    if (i === 0) bolinha.classList.add("ativo");
+    bolinha.addEventListener("click", () => destacarLivro(i));
+    indicadoresContainer.appendChild(bolinha);
+  }
+}
+
+function destacarLivro(indice) {
+  const cards = document.querySelectorAll(".card-livro");
+  const bolinhas = document.querySelectorAll(".indicador");
+
+  cards.forEach((card, i) => {
+    card.style.opacity = i === indice ? "1" : "0.6";
+    card.style.transform = i === indice ? "scale(1.05)" : "scale(1)";
   });
 
-  iniciarCarrossel(livros.length);
-}
-
-let slideAtual = 0;
-
-function irParaSlide(index) {
-  const total = document.querySelectorAll(".card-livro").length;
-  if (index >= total) index = 0;
-  if (index < 0) index = total - 1;
-  slideAtual = index;
-  carrossel.style.transform = `translateX(-${index * 100}%)`;
-  atualizarIndicadores();
-}
-
-function atualizarIndicadores() {
-  document.querySelectorAll(".indicador").forEach((dot, i) => {
-    dot.classList.toggle("ativo", i === slideAtual);
-  });
-}
-
-function iniciarCarrossel(total) {
-  setInterval(() => {
-    slideAtual = (slideAtual + 1) % total;
-    irParaSlide(slideAtual);
-  }, 4000);
+  bolinhas.forEach((b, i) =>
+    b.classList.toggle("ativo", i === indice)
+  );
 }
 
 carregarLivros();
+
