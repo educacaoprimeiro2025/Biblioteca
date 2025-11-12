@@ -7,6 +7,10 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const wrapper = document.getElementById("carrosselLivros");
 const indicadoresContainer = document.getElementById("indicadores");
 
+let indiceAtual = 0;
+let totalLivros = 0;
+let intervaloCarrossel = null;
+
 async function carregarLivros() {
   const { data: livros, error } = await supabase
     .from("livros")
@@ -19,9 +23,9 @@ async function carregarLivros() {
   }
 
   wrapper.innerHTML = "";
-  const quantidade = 4;
+  totalLivros = 4;
 
-  for (let i = 0; i < quantidade; i++) {
+  for (let i = 0; i < totalLivros; i++) {
     const livro = livros[i];
     const card = document.createElement("div");
     card.classList.add("card-livro");
@@ -44,33 +48,52 @@ async function carregarLivros() {
   }
 
   criarIndicadores(livros.length);
+  destacarLivro(0);
+  iniciarAnimacao();
 }
 
 function criarIndicadores(qtd) {
   indicadoresContainer.innerHTML = "";
-
   for (let i = 0; i < qtd; i++) {
     const bolinha = document.createElement("div");
     bolinha.classList.add("indicador");
     if (i === 0) bolinha.classList.add("ativo");
-    bolinha.addEventListener("click", () => destacarLivro(i));
+    bolinha.addEventListener("click", () => destacarLivro(i, true));
     indicadoresContainer.appendChild(bolinha);
   }
 }
 
-function destacarLivro(indice) {
+function destacarLivro(indice, manual = false) {
   const cards = document.querySelectorAll(".card-livro");
   const bolinhas = document.querySelectorAll(".indicador");
 
   cards.forEach((card, i) => {
-    card.style.opacity = i === indice ? "1" : "0.6";
-    card.style.transform = i === indice ? "scale(1.05)" : "scale(1)";
+    card.style.opacity = i === indice ? "1" : "0.5";
+    card.style.transform = i === indice ? "scale(1.07)" : "scale(1)";
+    card.style.transition = "all 0.8s ease";
   });
 
   bolinhas.forEach((b, i) =>
     b.classList.toggle("ativo", i === indice)
   );
+
+  indiceAtual = indice;
+
+  // se o usuário clicar manualmente, reinicia o timer
+  if (manual) {
+    clearInterval(intervaloCarrossel);
+    iniciarAnimacao();
+  }
+}
+
+function iniciarAnimacao() {
+  clearInterval(intervaloCarrossel);
+  intervaloCarrossel = setInterval(() => {
+    const bolinhas = document.querySelectorAll(".indicador");
+    if (bolinhas.length === 0) return;
+    indiceAtual = (indiceAtual + 1) % bolinhas.length;
+    destacarLivro(indiceAtual);
+  }, 4000); // muda a cada 4 segundos
 }
 
 carregarLivros();
-
