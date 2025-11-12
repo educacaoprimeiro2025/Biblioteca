@@ -1,29 +1,31 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// 🔹 Substitua com suas credenciais do Supabase
+// ✅ coloque suas credenciais reais aqui
 const SUPABASE_URL = "https://SEU-PROJETO.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6c21ybmJwYXdieWRxZWV6cXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI4MDM0NTAsImV4cCI6MjA3ODM3OTQ1MH0.HwOSk4_qtfRKLjYeO1o0e4qyXULxDRM7NSwzy2xvSoQ";
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_ANON_KEY = "SUA-CHAVE-ANON";
 
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const carrossel = document.getElementById("carrosselLivros");
 
-// Função para buscar livros
 async function carregarLivros() {
+  console.log("🔎 Buscando livros no Supabase...");
+
   const { data: livros, error } = await supabase
-    .from("livros")
-    .select("titulo, autor, imagem_url")
+    .from("livros") // <-- confira o nome exato da tabela
+    .select("*")
     .limit(4);
 
   if (error) {
-    console.error("Erro ao buscar livros:", error);
+    console.error("❌ Erro Supabase:", error.message);
     return;
   }
 
-  // Limpa o conteúdo atual
+  console.log("📚 Livros recebidos:", livros);
+
   carrossel.innerHTML = "";
 
   if (!livros || livros.length === 0) {
-    // Mostra 4 placeholders vazios
+    console.log("⚠️ Nenhum livro encontrado.");
     for (let i = 0; i < 4; i++) {
       const vazio = document.createElement("div");
       vazio.classList.add("card-livro", "vazio");
@@ -32,7 +34,6 @@ async function carregarLivros() {
     return;
   }
 
-  // Adiciona os livros do banco
   livros.forEach(livro => {
     const card = document.createElement("div");
     card.classList.add("card-livro");
@@ -44,7 +45,7 @@ async function carregarLivros() {
     carrossel.appendChild(card);
   });
 
-  // Completa com placeholders se tiver menos de 4
+  // completa com placeholders se tiver menos de 4
   for (let i = livros.length; i < 4; i++) {
     const vazio = document.createElement("div");
     vazio.classList.add("card-livro", "vazio");
@@ -53,6 +54,5 @@ async function carregarLivros() {
 }
 
 carregarLivros();
-
 
 
