@@ -215,7 +215,9 @@ header h1 {
 .indicador.ativo {
   background-color: orange;
 }
-
+.card-livro {
+  transition: all 0.8s ease;
+}
 /* ================================================== */
 /* ==================== CRIADORES =================== */
 /* ================================================== */
@@ -678,6 +680,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
