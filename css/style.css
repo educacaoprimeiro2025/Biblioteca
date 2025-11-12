@@ -153,90 +153,64 @@ header h1 {
 .carrossel h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: var(--cor-texto);
-  z-index: 5;
-  position: relative;
 }
 
-/* Contêiner principal */
 .carrossel-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
   position: relative;
-  min-height: 500px;
-  z-index: 1;
+  height: 450px;
+  transition: all 0.5s ease-in-out;
 }
 
-/* Cada slide */
+/* Slide base */
 .slide {
-  transform: scale(0.95);
-  transition: all 0.6s ease-in-out;
-  width: 260px;
-  max-width: 90vw;
-  background: linear-gradient(
-    145deg,
-    var(--cor-degrade-1, #ffb74d),
-    var(--cor-degrade-3, #ff9800)
-  );
-  border-radius: 18px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  padding: 18px;
-  position: relative;
+  position: absolute;
+  opacity: 0.4;
+  transform: scale(0.9);
+  transition: all 0.8s ease-in-out;
+  width: 280px;
+  background: linear-gradient(145deg, var(--cor-degrade-1), var(--cor-degrade-3));
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
   z-index: 1;
-  opacity: 0.5; 
-  filter: blur(1px); 
+  filter: blur(2px);
 }
 
-/* Slide ativo (destaque) */
+/* Slide ativo */
 .slide.ativo {
-  transform: scale(1.1);
-  width: 320px;
-  z-index: 3;
   opacity: 1;
-  filter: none; 
+  transform: scale(1.05);
+  filter: none;
+  z-index: 5;
 }
-
 
 .slide img {
   width: 100%;
-  height: 320px;
+  height: 300px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  image-rendering: crisp-edges;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 10px;
 }
 
-/* Hover */
-.slide:hover img {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-/* Descrição */
 .descricao h3 {
-  font-size: 1.3rem;
   margin: 10px 0 5px;
-  color: var(--cor-texto);
+  font-size: 1.2rem;
 }
 
 .descricao p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--cor-texto);
-  line-height: 1.5;
-  text-align: justify;
+  line-height: 1.4;
 }
 
-/* Indicadores (bolinhas) */
+/* Indicadores */
 .carrossel-indicadores {
-  margin-top: 30px;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: center;
   gap: 10px;
-  z-index: 10;
-  position: relative;
 }
 
 .carrossel-indicadores button {
@@ -715,6 +689,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
