@@ -143,90 +143,63 @@ header h1 {
 /* ==================== CARROSSEL =================== */
 /* ================================================== */
 
+/* ===========================
+   LIVROS EM DESTAQUE
+=========================== */
 .carrossel {
   text-align: center;
-  padding: 2rem 1rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.carrossel h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  padding: 40px 0;
 }
 
 .carrossel-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 450px;
-  transition: all 0.5s ease-in-out;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-/* Slide base */
-.slide {
-  position: absolute;
-  opacity: 0.4;
-  transform: scale(0.9);
-  transition: all 0.8s ease-in-out;
-  width: 280px;
-  background: linear-gradient(145deg, var(--cor-degrade-1), var(--cor-degrade-3));
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  padding: 1rem;
-  z-index: 1;
-  filter: blur(2px);
+.card-livro {
+  width: 220px;
+  height: 320px;
+  background-color: #ff8c00;
+  color: #000;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
 }
 
-/* Slide ativo */
-.slide.ativo {
-  opacity: 1;
+.card-livro:hover {
   transform: scale(1.05);
-  filter: none;
-  z-index: 5;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
 }
 
-.slide img {
+.card-livro img {
   width: 100%;
-  height: 300px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-bottom: 2px solid #e67300;
 }
 
-.descricao h3 {
+.card-livro h3 {
   margin: 10px 0 5px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
-.descricao p {
+.card-livro p {
   font-size: 0.9rem;
-  color: var(--cor-texto);
-  line-height: 1.4;
+  color: #333;
 }
 
-/* Indicadores */
-.carrossel-indicadores {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.card-livro.vazio {
+  background-color: transparent;
+  border: 2px dashed #ddd;
+  box-shadow: none;
 }
 
-.carrossel-indicadores button {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--cor-cinza);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.carrossel-indicadores button.ativo {
-  background-color: var(--cor-degrade-3);
-  transform: scale(1.3);
-}
 /* ================================================== */
 /* ==================== CRIADORES =================== */
 /* ================================================== */
@@ -689,6 +662,7 @@ footer p {
   padding-top: 2rem; /* ✅ adiciona um pequeno espaçamento */
   text-align: center;
 }
+
 
 
 
