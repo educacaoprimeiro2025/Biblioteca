@@ -32,7 +32,7 @@ main {
 /* ================================================== */
 
 header {
-  background: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
+  background: var(--gradiente-horizontal);
   color: var(--cor-texto);
   text-align: center;
   padding: 1.5rem 1rem 1rem; /* reduzido */
@@ -44,14 +44,13 @@ header {
   z-index: 10;
 }
 
-/* Logo menor */
 header img {
-  width: 100px;     /* antes era 140px */
+  width: 80px;     
   height: auto;
   margin-bottom: 0.5rem;
 }
 
-/* Título mais proporcional */
+
 header h1 {
   font-family: var(--fonte-titulo);
   font-size: 1.8rem;   /* antes 2.2rem */
@@ -59,8 +58,7 @@ header h1 {
   color: var(--cor-branca);
 }
 
-/* Menu logo abaixo, sem espaçamento extra */
-header nav {
+
   margin-top: 0.5rem;
 }
 
@@ -138,7 +136,7 @@ header .menu a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--cor-b-suave);
+  background-color: var(--gradiente-horizontal);           /* ====================== Mudei ==================== */ 
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--sombra-suave);
   padding: 1.5rem;
@@ -193,7 +191,7 @@ header .menu a:hover {
 .carrossel {
   text-align: center;
   padding: 2rem 1rem;
-  background-color: var(--cor-fundo);
+  background-color: var(--gradiente-horizontal);              /* ====================== mudei ==================== */
 }
 
 .carrossel-wrapper {
@@ -206,7 +204,7 @@ header .menu a:hover {
 }
 
 .card-livro {
-  background-color: var(--gradiente-horizontal);
+  background-color: var(--gradiente-horizontal);                             talvez aqui 
   color: var(--cor-texto);
   width: 220px;
   border-radius: 12px;
@@ -310,7 +308,7 @@ header .menu a:hover {
 }
 
 .filtro-letras button {
-  background-color: var(--cor-b-suave);
+  background-color: var(--gradiente-horizontal);                 /* ================== mudei */                                  
   color: var(--cor-texto);
   border: 1px solid var(--cor-destaque);
   border-radius: 8px;
@@ -337,9 +335,9 @@ header .menu a:hover {
   justify-items: center;
 }
 
-/* Estilo dos cards de livros */
+
 .livro-card {
-  background-color: var(--cor-b-suave);
+  background-color: var(--gradiente-horizontal);                              /* ================== mudei */
   border-radius: 12px;
   box-shadow: 0 2px 6px var(--sombra-suave);
   text-align: center;
@@ -393,6 +391,7 @@ footer {
 footer p {
   margin: 10px 0;
 }
+
 
 
 
