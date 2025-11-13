@@ -206,7 +206,7 @@ header .menu a:hover {
 }
 
 .card-livro {
-  background-color: var(--cor-b-suave);
+  background-color: var(--gradiente-horizontal);
   color: var(--cor-texto);
   width: 220px;
   border-radius: 12px;
@@ -393,6 +393,7 @@ footer {
 footer p {
   margin: 10px 0;
 }
+
 
 
 
