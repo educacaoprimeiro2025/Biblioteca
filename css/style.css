@@ -143,6 +143,7 @@ header .menu a:hover {
   width: 80%;
   max-width: 900px;
   margin: 2rem auto;
+  color: var(--gradiente-horizontal);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -391,6 +392,7 @@ footer {
 footer p {
   margin: 10px 0;
 }
+
 
 
 
