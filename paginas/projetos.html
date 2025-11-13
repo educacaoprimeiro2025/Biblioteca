@@ -1,91 +1,39 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Biblioteca Matosinho</title>
-    <link rel="stylesheet" href="../css/variaveis.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/botoes.css">
-
-</head>
-
-<body>
-    <header class="cabecalho">
-        <div class="logo">
-            <img src="../assets/icones/icone_escola.png" width="100" height="80" alt="Logo da Biblioteca">
-            <h1>Biblioteca Matosinho</h1>
-        </div>
-
-        <nav class="menu">
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="projetos.html" class="ativo">Projetos</a></li>
-                <li><a href="login.html" class="botao-login">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="carrossel-projetos">
-            <!-- PROJETO 1 -->
-            <div class="projeto ativo">
-                <div class="projeto-imagem">
-                    <img src="../assets/imagens/projeto1.jpg" alt="Projeto Leitura Solidária">
-                </div>
-                <div class="projeto-texto">
-                    <h2>Leitura Solidária</h2>
-                    <p>Iniciativa que estimula o hábito da leitura por meio de doações e trocas de livros entre alunos.
-                        O projeto promove o acesso à literatura e incentiva o compartilhamento de conhecimento.</p>
-                </div>
-            </div>
-
-            <!-- PROJETO 2 -->
-            <div class="projeto">
-                <div class="projeto-imagem">
-                    <img src="../assets/imagens/projeto2.jpg" alt="Projeto Biblioteca Digital">
-                </div>
-                <div class="projeto-texto">
-                    <h2>Biblioteca Digital</h2>
-                    <p>Modernização da biblioteca física com acervo digitalizado, permitindo o acesso a livros e
-                        materiais didáticos em qualquer lugar e dispositivo, promovendo inclusão e sustentabilidade.</p>
-                </div>
-            </div>
-
-            <!-- PROJETO 3 -->
-            <div class="projeto">
-                <div class="projeto-imagem">
-                    <img src="../assets/imagens/projeto3.jpg" alt="Projeto Escrita Criativa">
-                </div>
-                <div class="projeto-texto">
-                    <h2>Escrita Criativa</h2>
-                    <p>Projeto voltado à produção textual de contos e poesias, incentivando os estudantes a expressarem
-                        ideias e sentimentos por meio da escrita e da arte literária.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2025 Biblioteca Escolar José Maria Matosinho</p>
-    </footer>
-
-
-    <div class="menu-acessibilidade" id="menu-acessibilidade">
-        <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
-        <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
-        <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
-    </div>
+<main>
+  <section class="projetos-container">
+    <!-- Projeto 1 -->
+    <div class="card-projeto">
+      <div class="projeto-imagem">
+        <img src="../assets/imagens/projeto1.jpg" alt="Projeto Leitura Solidária">
+      </div>
+      <div class="projeto-texto">
+        <h2>Leitura Solidária</h2>
+        <p>Iniciativa que estimula o hábito da leitura por meio de doações e trocas de livros entre alunos.
+          O projeto promove o acesso à literatura e incentiva o compartilhamento de conhecimento.</p>
+      </div>
     </div>
 
+    <!-- Projeto 2 -->
+    <div class="card-projeto invertido">
+      <div class="projeto-imagem">
+        <img src="../assets/imagens/projeto2.jpg" alt="Projeto Biblioteca Digital">
+      </div>
+      <div class="projeto-texto">
+        <h2>Biblioteca Digital</h2>
+        <p>Modernização da biblioteca física com acervo digitalizado, permitindo o acesso a livros e materiais
+          didáticos em qualquer lugar e dispositivo, promovendo inclusão e sustentabilidade.</p>
+      </div>
+    </div>
 
-
-    <script src="../js/projetos.js"></script>
-    <script src="../js/acess.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js"></script>
-    <script type="module" src="../js/auth.js"></script>
-</body>
-
-</html>
+    <!-- Projeto 3 -->
+    <div class="card-projeto">
+      <div class="projeto-imagem">
+        <img src="../assets/imagens/projeto3.jpg" alt="Projeto Escrita Criativa">
+      </div>
+      <div class="projeto-texto">
+        <h2>Escrita Criativa</h2>
+        <p>Projeto voltado à produção textual de contos e poesias, incentivando os estudantes a expressarem ideias e
+          sentimentos por meio da escrita e da arte literária.</p>
+      </div>
+    </div>
+  </section>
+</main>
