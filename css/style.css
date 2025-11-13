@@ -394,6 +394,126 @@ footer p {
 }
 
 
+/* ================================================== */
+/* ==================== PROJETOS ===================== */
+/* ================================================== */
+
+.projetos-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card-projeto {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background: var(--cor-branca);
+  box-shadow: 0 4px 10px var(--sombra-suave);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-projeto:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px var(--sombra-suave);
+}
+
+/* Lado da imagem */
+.projeto-imagem {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.projeto-imagem::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -60px;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    var(--cor-degrade-2) 50%
+  );
+  transform: skewX(-20deg);
+}
+
+.card-projeto.invertido .projeto-imagem::after {
+  left: -60px;
+  right: auto;
+  background: linear-gradient(
+    -135deg,
+    transparent 50%,
+    var(--cor-degrade-2) 50%
+  );
+}
+
+.projeto-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lado do texto */
+.projeto-texto {
+  flex: 1;
+  padding: 2rem;
+  text-align: left;
+  background: var(--gradiente-horizontal);
+  color: var(--cor-branca);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-projeto.invertido {
+  flex-direction: row-reverse;
+}
+
+.projeto-texto h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.projeto-texto p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Animação suave ao aparecer */
+.card-projeto {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: subir 0.8s ease forwards;
+}
+
+.card-projeto:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.card-projeto:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes subir {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 
