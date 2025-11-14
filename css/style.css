@@ -848,18 +848,17 @@ footer p {
   margin-bottom: 1rem;
 }
 
-
 .menu .dropdown-content {
-  display: none !important;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease;
+  background: var(--cor-branca);           
+  border: 1px solid #ddd;     
+  border-radius: 10px;
 }
 
+.menu .dropdown-content a {
+  color: var(--cor-texto);     
+}
 
-.menu .dropdown:hover .dropdown-content {
-  display: block !important;
-  opacity: 1;
-  visibility: visible;
+.menu .dropdown-content a:hover {
+  background: #f2f2f2;         /* Fundo leve ao hover */
 }
 
