@@ -131,7 +131,7 @@ header .menu a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--gradiente-horizontal);
+  background: var(--cor-branca);
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--sombra-suave);
   padding: 1.5rem;
@@ -230,7 +230,7 @@ header .menu a:hover {
 }
 
 .card-livro {
-  background: var(--gradiente-horizontal);
+  background: var(--cor-branca);
   color: var(--cor-branca);
   width: 220px;
   border-radius: 12px;
@@ -838,6 +838,7 @@ footer p {
 .menu-item:hover .submenu {
   display: block;
 }
+
 
 
 
