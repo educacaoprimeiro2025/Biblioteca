@@ -35,7 +35,7 @@ header {
   background: var(--gradiente-horizontal);
   color: var(--cor-texto);
   text-align: center;
-  padding: 1.5rem 1rem 1rem; /* reduzido */
+  padding: 1.5rem 1rem 1rem;
   box-shadow: 0 4px 8px var(--sombra-suave);
   width: 100%;
   border-radius: 0 0 25px 25px;
@@ -50,16 +50,11 @@ header img {
   margin-bottom: 0.5rem;
 }
 
-
 header h1 {
   font-family: var(--fonte-titulo);
-  font-size: 1.8rem;   /* antes 2.2rem */
+  font-size: 1.8rem;
   margin: 0.2rem 0;
   color: var(--cor-branca);
-}
-
-
-  margin-top: 0.5rem;
 }
 
 header .menu ul {
@@ -136,14 +131,14 @@ header .menu a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--gradiente-horizontal);           /* ====================== Mudei ==================== */ 
+  background: var(--gradiente-horizontal);
   border-radius: 10px;
   box-shadow: 0 2px 6px var(--sombra-suave);
   padding: 1.5rem;
   width: 80%;
   max-width: 900px;
   margin: 2rem auto;
-  color: var(--gradiente-horizontal);
+  color: var(--cor-branca);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -192,7 +187,7 @@ header .menu a:hover {
 .carrossel {
   text-align: center;
   padding: 2rem 1rem;
-  background-color: var(--gradiente-horizontal);              /* ====================== mudei ==================== */
+  background: var(--gradiente-horizontal);
 }
 
 .carrossel-wrapper {
@@ -205,8 +200,8 @@ header .menu a:hover {
 }
 
 .card-livro {
-  background-color: var(--gradiente-horizontal);                             talvez aqui 
-  color: var(--cor-texto);
+  background: var(--gradiente-horizontal);
+  color: var(--cor-branca);
   width: 220px;
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--sombra-suave);
@@ -222,7 +217,7 @@ header .menu a:hover {
 }
 
 .card-livro.vazio {
-  background-color: transparent;
+  background: transparent;
   border: 2px dashed var(--cor-cinza);
 }
 
@@ -240,7 +235,7 @@ header .menu a:hover {
 
 .card-livro p {
   font-size: 0.9rem;
-  color: var(--cor-texto);
+  color: var(--cor-branca);
 }
 
 .indicadores {
@@ -270,7 +265,7 @@ header .menu a:hover {
 .login-container {
   max-width: 400px;
   margin: 60px auto;
-  background: linear-gradient(90deg, var(--cor-degrade-1), var(--cor-degrade-3));
+  background: var(--gradiente-horizontal);
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 0 15px var(--sombra-suave);
@@ -278,7 +273,7 @@ header .menu a:hover {
 }
 
 /* ==============================
-   CATÁLOGO DE LIVROS (GRID)
+   CATÁLOGO DE LIVROS
 ============================== */
 
 .catalogo {
@@ -299,7 +294,6 @@ header .menu a:hover {
   text-align: center;
 }
 
-/* Letras A–Z */
 .filtro-letras {
   display: flex;
   flex-wrap: wrap;
@@ -309,8 +303,8 @@ header .menu a:hover {
 }
 
 .filtro-letras button {
-  background-color: var(--gradiente-horizontal);                 /* ================== mudei */                                  
-  color: var(--cor-texto);
+  background: var(--gradiente-horizontal);
+  color: var(--cor-branca);
   border: 1px solid var(--cor-destaque);
   border-radius: 8px;
   padding: 0.5rem 0.8rem;
@@ -325,7 +319,6 @@ header .menu a:hover {
   color: var(--cor-branca);
 }
 
-/* Grid principal dos livros */
 .lista-livros {
   list-style: none;
   display: grid;
@@ -336,9 +329,8 @@ header .menu a:hover {
   justify-items: center;
 }
 
-
 .livro-card {
-  background-color: var(--gradiente-horizontal);                              /* ================== mudei */
+  background: var(--gradiente-horizontal);
   border-radius: 12px;
   box-shadow: 0 2px 6px var(--sombra-suave);
   text-align: center;
@@ -346,11 +338,12 @@ header .menu a:hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
   max-width: 220px;
+  color: var(--cor-branca);
 }
 
 .livro-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px var(--sombra);
+  box-shadow: 0 4px 12px var(--sombra-suave);
 }
 
 .livro-card img {
@@ -363,15 +356,13 @@ header .menu a:hover {
 
 .livro-card h3 {
   font-size: 1.1rem;
-  color: var(--cor-texto);
   margin: 0.5rem 0;
 }
 
 .livro-card p {
   font-size: 0.9rem;
-  color: var(--cor-texto-suave);
+  color: var(--cor-branca);
 }
-
 
 /* ================================================== */
 /* ===================== FOOTER ===================== */
@@ -392,7 +383,6 @@ footer {
 footer p {
   margin: 10px 0;
 }
-
 
 /* ================================================== */
 /* ==================== PROJETOS ===================== */
@@ -427,7 +417,6 @@ footer p {
   box-shadow: 0 8px 20px var(--sombra-suave);
 }
 
-/* Lado da imagem */
 .projeto-imagem {
   flex: 1;
   position: relative;
@@ -466,7 +455,6 @@ footer p {
   display: block;
 }
 
-/* Lado do texto */
 .projeto-texto {
   flex: 1;
   padding: 2rem;
@@ -493,19 +481,14 @@ footer p {
   line-height: 1.6;
 }
 
-/* Animação suave ao aparecer */
 .card-projeto {
   opacity: 0;
   transform: translateY(30px);
   animation: subir 0.8s ease forwards;
 }
 
-.card-projeto:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.card-projeto:nth-child(3) {
-  animation-delay: 0.4s;
-}
+.card-projeto:nth-child(2) { animation-delay: 0.2s; }
+.card-projeto:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes subir {
   to {
@@ -515,11 +498,11 @@ footer p {
 }
 
 /* ===========================
-   CARD DO CADASTRO DE LIVRO
+   CARD DO CADASTRO
 =========================== */
 
 .card-cadastro {
-  background: var(--gradiente-horizontal); /* mesmo laranja dos cards */
+  background: var(--gradiente-horizontal);
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 4px 10px var(--sombra-suave);
@@ -532,7 +515,6 @@ footer p {
   align-items: center;
 }
 
-/* Formulário dentro do card */
 .form-cadastro {
   width: 100%;
   display: flex;
@@ -579,7 +561,6 @@ footer p {
   transform: scale(1.03);
 }
 
-/* Mensagem de status */
 #msg {
   margin-top: 1rem;
   font-size: 1rem;
