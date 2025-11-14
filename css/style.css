@@ -187,7 +187,7 @@ header .menu a:hover {
 .carrossel {
   text-align: center;
   padding: 2rem 1rem;
-  background: var(--gradiente-horizontal);
+  background: var(--cor-branca);
 }
 
 .carrossel-wrapper {
@@ -567,6 +567,7 @@ footer p {
   font-weight: bold;
   color: var(--cor-branca);
 }
+
 
 
 
