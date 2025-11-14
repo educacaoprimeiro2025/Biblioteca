@@ -783,35 +783,7 @@ footer p {
   border-radius: 6px;
 }
 
-/* 🔒 Menu oculto por padrão */
-.dropdown-content {
-  display: none !important;
-  position: absolute;
-  top: 140%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--cor-branca);
-  padding: 0.5rem 0;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px var(--sombra-suave);
-  min-width: 160px;
-  z-index: 20;
-}
 
-.dropdown-content li {
-  list-style: none;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 0.7rem 1rem;
-  color: var(--cor-texto);
-  text-decoration: none;
-}
-
-.dropdown-content a:hover {
-  background-color: #eee;
-}
 
 /* ======== SUBMENU DO MENU LIVROS ======== */
 
@@ -851,3 +823,4 @@ footer p {
 .menu-item:hover .submenu {
   display: block;
 }
+
