@@ -711,6 +711,68 @@ footer p {
   color: var(--cor-branca);
 }
 
+/* ===========================
+   CARD ÚNICO – FOTO DA TURMA
+   =========================== */
+
+.card-turma {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+  background: var(--cor-b-suave);
+  border-radius: 15px;
+  box-shadow: var(--sombra-flutuante);
+
+  padding: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.turma-imagem img {
+  width: 340px;
+  height: 240px;
+  object-fit: cover;
+
+  border-radius: 15px;
+  border: 3px solid var(--cor-principal);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.turma-texto {
+  max-width: 500px;
+}
+
+.turma-texto h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--cor-principal);
+}
+
+.turma-texto p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--cor-texto);
+}
+
+
+
+@media (max-width: 768px) {
+  .card-turma {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .turma-imagem img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+  }
+}
+
+
 
 
 
