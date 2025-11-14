@@ -14,32 +14,24 @@
 
 <body>
 
-<header class="cabecalho">
-  <div class="logo">
-    <img src="assets/icones/icone_escola.png" alt="Logo da Biblioteca">
-    <h1>Biblioteca Matosinho</h1>
-  </div>
+<header>
+    <nav class="menu">
+        <ul>
+            <li class="menu-item">
+                <a href="#">Livros ▾</a>
 
-  <nav class="menu">
-    <ul>
-      <li><a href="home.html">Home</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="projetos.html">Projetos</a></li>
+                <!-- SUBMENU (só aparece ao passar o mouse) -->
+                <ul class="submenu">
+                    <li><a href="cadastrar-livro.html">Cadastrar</a></li>
+                    <li><a href="editar-livro.html">Editar</a></li>
+                    <li><a href="excluir-livro.html">Excluir</a></li>
+                </ul>
+            </li>
 
-      <li class="dropdown">
-        <a href="#" class="dropdown-btn">Livros ▾</a>
-
-        <ul class="dropdown-content">
-          <li><a href="cadastrar_livro.html" class="ativo">Cadastrar</a></li>
-          <li><a href="editar_livro.html">Editar</a></li>
-          <li><a href="excluir_livro.html">Excluir</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="login.html">Sair</a></li>
         </ul>
-      </li>
-
-      <li><a href="catalogo.html">Catálogo</a></li>
-      <li><a href="perfil.html" class="botao-perfil">Perfil</a></li>
-    </ul>
-  </nav>
+    </nav>
 </header>
 
 
@@ -86,4 +78,5 @@
 
 
 </html>
+
 
