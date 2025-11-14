@@ -1,39 +1,129 @@
-<main>
-  <section class="projetos-container">
-    <!-- Projeto 1 -->
-    <div class="card-projeto">
-      <div class="projeto-imagem">
-        <img src="../assets/imagens/projeto1.jpg" alt="Projeto Leitura Solidária">
-      </div>
-      <div class="projeto-texto">
-        <h2>Leitura Solidária</h2>
-        <p>Iniciativa que estimula o hábito da leitura por meio de doações e trocas de livros entre alunos.
-          O projeto promove o acesso à literatura e incentiva o compartilhamento de conhecimento.</p>
-      </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos - Biblioteca José Maria Matosinho</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/variaveis.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/botoes.css">
+</head>
+
+<body>
+  <!-- ===================== HEADER ===================== -->
+  <header class="cabecalho">
+    <div class="logo">
+      <img src="../assets/icones/icone_escola.png" alt="Logo da Biblioteca">
+      <h1>Biblioteca Matosinho</h1>
     </div>
 
-    <!-- Projeto 2 -->
-    <div class="card-projeto invertido">
-      <div class="projeto-imagem">
-        <img src="../assets/imagens/projeto2.jpg" alt="Projeto Biblioteca Digital">
-      </div>
-      <div class="projeto-texto">
-        <h2>Biblioteca Digital</h2>
-        <p>Modernização da biblioteca física com acervo digitalizado, permitindo o acesso a livros e materiais
-          didáticos em qualquer lugar e dispositivo, promovendo inclusão e sustentabilidade.</p>
-      </div>
-    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="projetos.html" class="ativo">Projetos</a></li>
+        <li><a href="login.html" class="botao-login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Projeto 3 -->
-    <div class="card-projeto">
-      <div class="projeto-imagem">
-        <img src="../assets/imagens/projeto3.jpg" alt="Projeto Escrita Criativa">
+  <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
+  <main class="container">
+
+    <section class="projetos-container">
+
+      <h2 style="font-family: var(--fonte-titulo); margin-bottom: .3rem;">
+        Projetos da Escola
+      </h2>
+
+      <p style="max-width: 800px; text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">
+        Aqui estão alguns dos projetos desenvolvidos pela 
+        <strong>Escola José Maria Matosinho</strong>.  
+        Embora muitos estejam ligados à biblioteca, outros fazem parte da 
+        <strong>formação educacional, cultural e social</strong> dos nossos alunos.
+      </p>
+
+      <!-- ===================== PROJETO 1 ===================== -->
+      <div class="card-projeto">
+        <div class="projeto-imagem">
+          <img src="../assets/imagens/projeto1.jpg" alt="Projeto Leitura Solidária">
+        </div>
+        <div class="projeto-texto">
+          <h2>Leitura Solidária</h2>
+          <p>Iniciativa que estimula o hábito da leitura por meio de doações e trocas de livros entre alunos.
+            O projeto promove o acesso à literatura e incentiva o compartilhamento de conhecimento.</p>
+        </div>
       </div>
-      <div class="projeto-texto">
-        <h2>Escrita Criativa</h2>
-        <p>Projeto voltado à produção textual de contos e poesias, incentivando os estudantes a expressarem ideias e
-          sentimentos por meio da escrita e da arte literária.</p>
+
+      <!-- ===================== PROJETO 2 ===================== -->
+      <div class="card-projeto invertido">
+        <div class="projeto-imagem">
+          <img src="../assets/imagens/projeto2.jpg" alt="Projeto Biblioteca Digital">
+        </div>
+        <div class="projeto-texto">
+          <h2>Biblioteca Digital</h2>
+          <p>Modernização da biblioteca física com acervo digitalizado, permitindo o acesso a livros e materiais
+            didáticos em qualquer lugar e dispositivo, promovendo inclusão e sustentabilidade.</p>
+        </div>
       </div>
+
+      <!-- ===================== PROJETO 3 ===================== -->
+      <div class="card-projeto">
+        <div class="projeto-imagem">
+          <img src="../assets/imagens/projeto3.jpg" alt="Projeto Escrita Criativa">
+        </div>
+        <div class="projeto-texto">
+          <h2>Escrita Criativa</h2>
+          <p>Projeto voltado à produção textual de contos e poesias, incentivando os estudantes a expressarem ideias e
+            sentimentos por meio da escrita e da arte literária.</p>
+        </div>
+      </div>
+
+      <!-- ===================== PROJETO 4 ===================== -->
+      <div class="card-projeto invertido">
+        <div class="projeto-imagem">
+          <img src="../assets/imagens/projeto4.jpg" alt="Projeto Educação Ambiental">
+        </div>
+        <div class="projeto-texto">
+          <h2>Educação Ambiental</h2>
+          <p>Atividades práticas e teóricas que conscientizam os estudantes sobre sustentabilidade, reciclagem e 
+            preservação do meio ambiente dentro e fora da escola.</p>
+        </div>
+      </div>
+
+      <!-- ===================== PROJETO 5 ===================== -->
+      <div class="card-projeto">
+        <div class="projeto-imagem">
+          <img src="../assets/imagens/projeto5.jpg" alt="Projeto Tecnologia e Inovação">
+        </div>
+        <div class="projeto-texto">
+          <h2>Tecnologia e Inovação</h2>
+          <p>Projeto desenvolvido com alunos do curso técnico de Desenvolvimento de Sistemas, incentivando lógica,
+            programação, robótica e criação de soluções digitais.</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <p>© 2025 Biblioteca Escolar José Maria Matosinho</p>
+  </footer>
+
+  <!-- ===================== ACESSIBILIDADE ===================== -->
+  <div class="acessibilidade-container">
+    <button class="botao-acessibilidade" id="abrir-acessibilidade" aria-label="Acessibilidade">🖐️</button>
+
+    <div class="menu-acessibilidade" id="menu-acessibilidade">
+      <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
+      <button id="diminuir-fonte" aria-label="Diminuir fonte">A-</button>
+      <button id="toggle-dark" aria-label="Alternar modo escuro">🌙</button>
     </div>
-  </section>
-</main>
+  </div>
+
+  <script src="../js/acess.js"></script>
+</body>
+</html>
