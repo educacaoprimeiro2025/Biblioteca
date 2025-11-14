@@ -763,13 +763,14 @@ footer p {
 }
 
 /* ============================
-   DROPDOWN AJUSTADO E CORRIGIDO
+   DROPDOWN 
 ============================ */
 
 .menu ul {
   display: flex;
   align-items: center;
   gap: 1rem;
+  color: var(--cor-texto);
 }
 
 .dropdown {
@@ -823,4 +824,5 @@ footer p {
 .menu-item:hover .submenu {
   display: block;
 }
+
 
