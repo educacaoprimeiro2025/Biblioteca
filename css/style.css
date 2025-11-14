@@ -138,7 +138,7 @@ header .menu a:hover {
   width: 80%;
   max-width: 900px;
   margin: 2rem auto;
-  color: var(--cor-branca);
+  color: var(--cor-texto);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -231,7 +231,7 @@ header .menu a:hover {
 
 .card-livro {
   background: var(--cor-branca);
-  color: var(--cor-branca);
+  color: var(--cor-texto);
   width: 220px;
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--sombra-suave);
@@ -265,7 +265,7 @@ header .menu a:hover {
 
 .card-livro p {
   font-size: 0.9rem;
-  color: var(--cor-branca);
+  color: var(--cor-texto);
 }
 
 .indicadores {
@@ -294,7 +294,7 @@ header .menu a:hover {
 
 /* ======== CONTAINER CENTRAL DO LOGIN ======== */
 .login-container {
-  background: var(--cor-principal);
+  background: var(--gradiente-horizontal);
   padding: 2.5rem;
   width: 360px;
   margin: 4rem auto;
@@ -838,6 +838,7 @@ footer p {
 .menu-item:hover .submenu {
   display: block;
 }
+
 
 
 
