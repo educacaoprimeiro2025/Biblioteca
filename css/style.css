@@ -466,7 +466,6 @@ header .menu a:hover {
   color: var(--cor-texto);
   text-align: center;
 }
-
 .filtro-letras {
   display: flex;
   flex-wrap: wrap;
@@ -483,7 +482,7 @@ header .menu a:hover {
   padding: 0.5rem 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; /* Já existia e continua igual */
 }
 
 .filtro-letras button:hover,
@@ -491,6 +490,11 @@ header .menu a:hover {
   background-color: var(--cor-destaque);
   color: var(--cor-branca);
 }
+
+.filtro-letras button:hover {
+  transform: translateY(-5px);
+}
+
 
 .lista-livros {
   list-style: none;
@@ -834,5 +838,6 @@ footer p {
 .menu-item:hover .submenu {
   display: block;
 }
+
 
 
