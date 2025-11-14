@@ -813,7 +813,41 @@ footer p {
   background-color: #eee;
 }
 
-/* 👇 Só aparece ao passar o mouse */
-.dropdown:hover .dropdown-content {
-  display: block !important;
+/* ======== SUBMENU DO MENU LIVROS ======== */
+
+.menu-item {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--cor-branca);
+  padding: 0.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--sombra-suave);
+  min-width: 160px;
+  z-index: 20;
+}
+
+.submenu li {
+  list-style: none;
+}
+
+.submenu a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.submenu a:hover {
+  background: #eee;
+}
+
+/* Mostrar ao passar o mouse */
+.menu-item:hover .submenu {
+  display: block;
 }
