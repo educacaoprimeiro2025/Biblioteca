@@ -1,4 +1,4 @@
-chat esse e meu css /* ================================================== */
+ /* ================================================== */
 /* =================== GLOBAL ======================= */
 /* ================================================== */
 
@@ -764,34 +764,69 @@ footer p {
 
 
 
+/* ============================
+     MENU / DROPDOWN CORRIGIDO
+============================ */
 
+.menu {
+  background: var(--cor-principal);
+  padding: 0.6rem 1rem;
+}
 
+.menu ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menu a {
+  color: var(--cor-branca);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transicao-padrao);
+}
+
+.menu a:hover {
+  color: var(--cor-destaque);
+}
+
+/* ITEM PRINCIPAL */
 .menu-item {
   position: relative;
 }
 
+/* 🔒 SUBMENU — INVISÍVEL POR PADRÃO */
 .submenu {
-  display: none;
+  display: none;   /* <--- o principal */
   position: absolute;
   top: 100%;
   left: 0;
   background: var(--cor-branca);
+  min-width: 180px;
+  padding: 0.3rem 0;
+  border-radius: 8px;
   box-shadow: 0 4px 12px var(--sombra-suave);
-  min-width: 160px;
   z-index: 20;
 }
 
+.submenu li {
+  list-style: none;
+}
+
+.submenu a {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: var(--cor-texto);
+  transition: var(--transicao-padrao);
+}
+
+.submenu a:hover {
+  background: #f1f1f1;
+}
+
+/* 🟧 MOSTRA O SUBMENU SOMENTE AO PASSAR O MOUSE */
 .menu-item:hover .submenu {
   display: block;
 }
 
-.submenu a {
-  padding: 0.7rem 1rem;
-  display: block;
-  color: var(--cor-texto);
-  text-decoration: none;
-}
-
-.submenu a:hover {
-  background: #eee;
-}
