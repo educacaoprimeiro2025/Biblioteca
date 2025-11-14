@@ -763,7 +763,7 @@ footer p {
 }
 
 /* ============================
-   DROPDOWN DO MENU LIVROS
+   DROPDOWN AJUSTADO E CORRIGIDO
 ============================ */
 
 .menu ul {
@@ -778,13 +778,14 @@ footer p {
 
 .dropdown-btn {
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  color: var(--cor-branca);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
 }
 
-/* Área do dropdown escondida */
+/* 🔒 Menu oculto por padrão */
 .dropdown-content {
-  display: none;
+  display: none !important;
   position: absolute;
   top: 140%;
   left: 50%;
@@ -794,7 +795,6 @@ footer p {
   border-radius: 10px;
   box-shadow: 0 4px 12px var(--sombra-suave);
   min-width: 160px;
-  text-align: left;
   z-index: 20;
 }
 
@@ -810,55 +810,10 @@ footer p {
 }
 
 .dropdown-content a:hover {
-  background-color: var(--cor-hover);
+  background-color: #eee;
 }
 
-/* Exibir quando passar o mouse */
+/* 👇 Só aparece ao passar o mouse */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block !important;
 }
-
-
-/* ============================
-   CARD DE CADASTRO CENTRALIZADO
-============================ */
-
-.card-cadastro {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 95%;
-  max-width: 550px;
-}
-
-.form-cadastro {
-  width: 100%;
-}
-
-.form-cadastro label {
-  display: block;
-  text-align: left;
-  margin-bottom: 0.3rem;
-}
-
-.form-cadastro input,
-.form-cadastro textarea {
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.menu .dropdown-content {
-  background: var(--cor-branca);           
-  border: 1px solid #ddd;     
-  border-radius: 10px;
-}
-
-.menu .dropdown-content a {
-  color: var(--cor-texto);     
-}
-
-.menu .dropdown-content a:hover {
-  background: #f2f2f2;         /* Fundo leve ao hover */
-}
-
