@@ -711,68 +711,42 @@ footer p {
   color: var(--cor-branca);
 }
 
-/* ===========================
-   CARD ÚNICO – FOTO DA TURMA
-   =========================== */
-
+/* CARD DE FOTO DA TURMA */
 .card-turma {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
   background: var(--cor-b-suave);
+  padding: 25px;
   border-radius: 15px;
   box-shadow: var(--sombra-flutuante);
-
-  padding: 30px;
-  margin-top: 30px;
-  flex-wrap: wrap;
+  text-align: center;
 }
 
-.turma-imagem img {
-  width: 340px;
-  height: 240px;
-  object-fit: cover;
-
-  border-radius: 15px;
-  border: 3px solid var(--cor-principal);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+/* Foto grande e centralizada */
+.card-turma .foto-turma {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-.turma-texto {
-  max-width: 500px;
-}
-
-.turma-texto h2 {
-  font-family: var(--fonte-titulo);
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+/* Título */
+.card-turma h2 {
+  font-size: 1.4rem;
   color: var(--cor-principal);
+  margin-bottom: 10px;
+  font-family: var(--fonte-titulo);
 }
 
-.turma-texto p {
+/* Texto */
+.card-turma p {
   font-size: 1rem;
   line-height: 1.5;
   color: var(--cor-texto);
 }
-
-
-
-@media (max-width: 768px) {
-  .card-turma {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .turma-imagem img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-  }
-}
-
-
 
 
 
