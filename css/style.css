@@ -262,15 +262,158 @@ header .menu a:hover {
 /* ====================== LOGIN ===================== */
 /* ================================================== */
 
+/* ======== CONTAINER CENTRAL DO LOGIN ======== */
 .login-container {
-  max-width: 400px;
-  margin: 60px auto;
-  background: var(--gradiente-horizontal);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px var(--sombra-suave);
+  background: var(--cor-principal);
+  padding: 2.5rem;
+  width: 360px;
+  margin: 4rem auto;
+  border-radius: 15px;
   text-align: center;
+  color: var(--cor-branca);
+  box-shadow: var(--sombra-flutuante);
+  animation: login-entrar 0.5s ease;
 }
+
+@keyframes login-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+
+
+/* ======== BOTÕES DE SELEÇÃO (Aluno/Professor/Visitante) ======== */
+.user-type-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-type-buttons button {
+  background: var(--cor-branca);
+  color: var(--cor-texto);
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transicao-padrao);
+}
+
+.user-type-buttons button:hover {
+  background: var(--cor-destaque);
+  transform: scale(1.08);
+}
+
+
+
+/* ======== FORMULÁRIO ======== */
+#loginForm {
+  display: none;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#loginForm label {
+  color: var(--cor-branca);
+  font-weight: bold;
+}
+
+#loginForm input {
+  width: 90%;
+  padding: 0.6rem;
+  margin: 0.4rem 0 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--cor-cinza);
+  outline: none;
+  transition: var(--transicao-padrao);
+}
+
+#loginForm input:focus {
+  border-color: var(--cor-destaque);
+  box-shadow: 0 0 6px var(--cor-destaque);
+}
+
+#loginForm button {
+  background: var(--cor-branca);
+  color: var(--cor-texto);
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transicao-padrao);
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+#loginForm button:hover {
+  background: var(--cor-hover);
+  transform: scale(1.05);
+}
+
+
+
+/* ===== CADASTRO LINK ===== */
+.cadastro-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.cadastro-link a {
+  color: var(--cor-branca);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.cadastro-link a:hover {
+  color: var(--cor-hover);
+}
+
+
+
+/* ======== MODO ESCURO ======== */
+.dark-mode .login-container {
+  background: var(--cor-degrade-3);
+}
+
+.dark-mode .user-type-buttons button {
+  background: var(--cor-b-suave);
+  color: var(--cor-texto);
+}
+
+.dark-mode #loginForm input {
+  background: #2b2b2b;
+  border-color: var(--cor-cinza);
+  color: var(--cor-texto);
+}
+
+.dark-mode #loginForm button {
+  background: var(--cor-b-suave);
+}
+
+.dark-mode .cadastro-link a {
+  color: var(--cor-principal);
+}
+
 
 /* ==============================
    CATÁLOGO DE LIVROS
@@ -567,6 +710,7 @@ footer p {
   font-weight: bold;
   color: var(--cor-branca);
 }
+
 
 
 
