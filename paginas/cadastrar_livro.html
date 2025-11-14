@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastrar Livro | Biblioteca</title>
+  <title>Cadastrar Livro | Biblioteca Matosinho</title>
 
   <link rel="stylesheet" href="../css/variaveis.css">
   <link rel="stylesheet" href="../css/style.css">
@@ -14,32 +14,39 @@
 
 <body>
 
-<header>
-     <nav class="menu">
+  <!-- HEADER igual ao da HOME -->
+  <header class="cabecalho">
+    <div class="logo">
+      <img src="../assets/icones/icone_escola.png" alt="Logo da Biblioteca">
+      <h1>Biblioteca Matosinho</h1>
+    </div>
+
+    <nav class="menu">
       <ul>
-          <li><a href="index.html">Início</a></li>
-  
-          <li class="menu-item">
-              <a href="#">Livros ▾</a>
-              <ul class="submenu">
-                  <li><a href="editar-livro.html">Editar Livro</a></li>
-                  <li><a href="excluir-livro.html">Excluir Livro</a></li>
-                  <li><a href="cadastrar-livro.html">Cadastrar Livro</a></li>
-              </ul>
-          </li>
-  
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="logout.html">Sair</a></li>
+        <li><a href="home.html">Home</a></li>
+
+        <li class="menu-item">
+          <a href="#">Livros ▾</a>
+          <ul class="submenu">
+            <li><a href="editar-livro.html">Editar Livro</a></li>
+            <li><a href="excluir-livro.html">Excluir Livro</a></li>
+            <li><a href="cadastrar-livro.html" class="ativo">Cadastrar Livro</a></li>
+          </ul>
+        </li>
+
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="logout.html">Sair</a></li>
       </ul>
-  </nav>
-</header>
+    </nav>
+  </header>
 
-
+  <!-- CONTEÚDO -->
   <main class="container">
     <h2>Cadastrar novo livro</h2>
 
     <div class="card-cadastro">
       <form id="formLivro" class="form-cadastro">
+        
         <label for="titulo">Título do livro</label>
         <input type="text" id="titulo" placeholder="Digite o título" required>
 
@@ -51,6 +58,7 @@
 
         <button type="submit">Salvar</button>
       </form>
+
       <p id="msg"></p>
     </div>
   </main>
@@ -60,9 +68,7 @@
   </footer>
 
   <div class="acessibilidade-container">
-    <button class="botao-acessibilidade" id="abrir-acessibilidade" aria-label="Acessibilidade">
-      🖐️
-    </button>
+    <button class="botao-acessibilidade" id="abrir-acessibilidade" aria-label="Acessibilidade">🖐️</button>
 
     <div class="menu-acessibilidade" id="menu-acessibilidade">
       <button id="aumentar-fonte" aria-label="Aumentar fonte">A+</button>
@@ -74,10 +80,7 @@
   <script src="../js/acess.js"></script>
   <script type="module" src="../js/cadastrar_livros.js"></script>
   <script type="module" src="../js/auth.js"></script>
+
 </body>
 
-
 </html>
-
-
-
